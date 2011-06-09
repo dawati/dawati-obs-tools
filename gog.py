@@ -148,7 +148,7 @@ if __name__ == '__main__':
         'cairo', 'telepathy-logger', 'polkit', 'polkit-gnome', 'upower',
 
         # own web site
-        'avahi', 'libcanberra', 'sqlite', 'xulrunner',
+        'avahi', 'libcanberra', 'sqlite', 'xulrunner', 'syncevolution',
     )
     print("% 28s % 12s% 12s" % ('Package', 'devel:gnome', 'upstream'))
     for obs_package, obs_version in repo.packages.iteritems():

@@ -92,7 +92,7 @@ class GNOME:
         self.package_map = {
             'librsvg2'    : 'librsvg',      'gtk3'           : 'gtk+',
             'libunique3'  : 'libunique',    'gnome-python2'  : 'gnome-python',
-            'GConf2'      : 'Gconf',        'libgtop2'       : 'libgtop',
+            'GConf2'      : 'GConf',        'libgtop2'       : 'libgtop',
             'glib2'       : 'glib',         'gtksourceview2' : 'gtksourceview',
             'gtkhtml3'    : 'gtkhtml',      'gnome-vfs2'     : 'gnome-vfs',
             'gtk2-engines': 'gtk-engines',  'gtk2'           : 'gtk+',

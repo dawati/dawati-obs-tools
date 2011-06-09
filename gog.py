@@ -105,7 +105,7 @@ class GNOME:
         # parallel installable with the GNOME 3 versions and need to be
         # tracked too
         self.gnome2 = (
-            'gtk2', 'gtksourceview2',
+            'gtk2', 'gtksourceview2', 'gtk2-engines',
         )
         # Some packages don't follow the odd/even for unstable/stable rule or
         # we need the latest unstable version

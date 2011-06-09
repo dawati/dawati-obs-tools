@@ -101,6 +101,11 @@ class GNOME:
             'libgnomeprintui22': 'libgnomeprintui',
             'abattis-cantarell-fonts': 'cantarell-fonts',
         }
+        # Some packages don't follow the odd/even for unstable/stable rule or
+        # we need the latest unstable version
+        self.no_odd_even_rule = (
+            'libnotify', 'notification-daemon', 'dconf'
+        )
 
     def get_package(self, name):
         if self.package_map.has_key(name):
@@ -120,12 +125,22 @@ class GNOME:
         try:
             fp = urllib2.urlopen(url)
             j = json.load(fp)
-            stable = [x for x in j[2][upstream_name] if \
-                      int(x.split(".")[1]) % 2 == 0 ]
-            unstable = [x for x in j[2][upstream_name] if \
-                        int(x.split(".")[1]) % 2 == 1 ]
-            package['stable'] = stable[-1] if len(stable) > 0 else None
-            package['unstable'] = unstable[-1] if len(unstable) > 0 else None
+
+            package['stable'] = None
+            package['unstable'] = None
+
+            if upstream_name in self.no_odd_even_rule:
+                package['stable'] = j[2][upstream_name][-1]
+                package['unstable'] = package['stable']
+            else:
+                stable = [x for x in j[2][upstream_name] if \
+                          int(x.split(".")[1]) % 2 == 0 ]
+                unstable = [x for x in j[2][upstream_name] if \
+                            int(x.split(".")[1]) % 2 == 1 ]
+                if len(stable) > 0:
+                    package['stable'] = stable[-1]
+                if len(unstable) > 0:
+                    package['unstable'] = stable[-1]
 
             # In debug mode print out the parsed json object if we haven't
             # been able to parse the stable or unstable version

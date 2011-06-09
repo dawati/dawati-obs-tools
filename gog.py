@@ -122,7 +122,7 @@ class GNOME:
             package['stable'] = stable[-1] if len(stable) > 1 else None
             package['unstable'] = unstable[-1] if len(unstable) > 1 else None
         except urllib2.HTTPError:
-            package = {'stable': None, 'unstable': None}
+            package = {'stable': 'Not found', 'unstable': 'Not found'}
 
         return package
 

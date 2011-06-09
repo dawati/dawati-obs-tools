@@ -44,6 +44,10 @@ def debug(message):
     if options.verbose > 1:
         print message
 
+def is_debug_enabled():
+    global options
+    return options.verbose > 1
+
 class OBSRepository:
     def __init__(self, url):
         self.url = url
@@ -107,6 +111,7 @@ class GNOME:
         return self.packages[name]
 
     def get_package_real(self, upstream_name):
+        global options
         package = {}
 
         base = "%s/%s" % (self.base_url, upstream_name)
@@ -119,8 +124,15 @@ class GNOME:
                       int(x.split(".")[1]) % 2 == 0 ]
             unstable = [x for x in j[2][upstream_name] if \
                         int(x.split(".")[1]) % 2 == 1 ]
-            package['stable'] = stable[-1] if len(stable) > 1 else None
-            package['unstable'] = unstable[-1] if len(unstable) > 1 else None
+            package['stable'] = stable[-1] if len(stable) > 0 else None
+            package['unstable'] = unstable[-1] if len(unstable) > 0 else None
+
+            # In debug mode print out the parsed json object if we haven't
+            # been able to parse the stable or unstable version
+            if is_debug_enabled():
+                if not package['stable'] or not package['unstable']:
+                    print(j[2])
+
         except urllib2.HTTPError:
             package = {'stable': 'Not found', 'unstable': 'Not found'}
 

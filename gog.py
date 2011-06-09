@@ -197,7 +197,7 @@ if __name__ == '__main__':
 
         # own web site
         'avahi', 'libcanberra', 'sqlite', 'xulrunner', 'syncevolution',
-        'webkitgtk',
+        'webkitgtk', 'gimp',
     )
 
     print("% 28s % 12s% 12s" % ('Package', 'devel:gnome', 'upstream'))

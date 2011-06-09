@@ -74,8 +74,8 @@ class OBSRepository:
                 for s in root.findall('{%s}package' % ns2):
                     arch = s.find('{%s}arch' % ns2).text
                     if arch == 'src':
-                        name = s.find('{%s}name' %ns2)
-                        version = s.find('{%s}version' %ns2)
+                        name = s.find('{%s}name' % ns2)
+                        version = s.find('{%s}version' % ns2)
                         ver = version.attrib.get("ver")
                         self.packages[name.text] = ver
 
@@ -133,15 +133,16 @@ if __name__ == '__main__':
     parser.add_option("-p", "--package", type="string", dest="package",
                       help="package name")
     parser.add_option("-v", "--verbose", action="store_true", dest="verbose")
-    parser.add_option("-d", "--debug", action="store_const", const=2, dest="verbose")
+    parser.add_option("-d", "--debug", action="store_const", const=2,
+                      dest="verbose")
 
     (options, args) = parser.parse_args()
 
-    gnome= GNOME()
+    gnome = GNOME()
     repo = OBSRepository(obs_gnome_devel)
 
-    # list of OBS packages to ignore (because they are in devel:gnome but not being
-    # hosted on gnome.org
+    # list of OBS packages to ignore (because they are in devel:gnome but not
+    # being hosted on gnome.org
     ignore = (
         # freedesktop
         'cairo', 'telepathy-logger', 'polkit', 'polkit-gnome', 'upower',
@@ -152,9 +153,11 @@ if __name__ == '__main__':
     print("% 28s % 12s% 12s" % ('Package', 'devel:gnome', 'upstream'))
     for obs_package, obs_version in repo.packages.iteritems():
         if obs_package in ignore:
+            note("Ignored %s" % obs_package)
             continue
 
         upstream = gnome.get_package(obs_package)
         if obs_version != upstream['stable']:
-            print "% 28s % 12s% 12s" % (obs_package, obs_version, upstream['stable'])
+            print "% 28s % 12s% 12s" % (obs_package, obs_version,
+                                        upstream['stable'])
         time.sleep(0.2) # rate limit at 5 requests/s

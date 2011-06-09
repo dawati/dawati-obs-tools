@@ -110,7 +110,7 @@ class GNOME:
         # Some packages don't follow the odd/even for unstable/stable rule or
         # we need the latest unstable version
         self.no_odd_even_rule = (
-            'libnotify', 'notification-daemon', 'dconf', 'gjs'
+            'libnotify', 'notification-daemon', 'dconf', 'gjs', 'libxklavier',
         )
 
     def get_package(self, name):

@@ -95,12 +95,18 @@ class GNOME:
             'GConf2'      : 'Gconf',        'libgtop2'       : 'libgtop',
             'glib2'       : 'glib',         'gtksourceview2' : 'gtksourceview',
             'gtkhtml3'    : 'gtkhtml',      'gnome-vfs2'     : 'gnome-vfs',
-            'gtk2-engines': 'gtk-engines',
+            'gtk2-engines': 'gtk-engines',  'gtk2'           : 'gtk+',
 
             'libgnomeprint22': 'libgnomeprint',
             'libgnomeprintui22': 'libgnomeprintui',
             'abattis-cantarell-fonts': 'cantarell-fonts',
         }
+        # Some OBS packages have GNOME 2 versions of the software. These are
+        # parallel installable with the GNOME 3 versions and need to be
+        # tracked too
+        self.gnome2 = (
+            'gtk2', 'gtksourceview2',
+        )
         # Some packages don't follow the odd/even for unstable/stable rule or
         # we need the latest unstable version
         self.no_odd_even_rule = (
@@ -108,14 +114,17 @@ class GNOME:
         )
 
     def get_package(self, name):
+        obs_name = name
+        upstream_name = name
+
         if self.package_map.has_key(name):
-            name = self.package_map[name]
+            upstream_name = self.package_map[name]
 
         if not self.packages.has_key(name):
-            self.packages[name] = self.get_package_real(name)
+            self.packages[name] = self.get_package_real(obs_name, upstream_name)
         return self.packages[name]
 
-    def get_package_real(self, upstream_name):
+    def get_package_real(self, obs_name, upstream_name):
         global options
         package = {}
 
@@ -133,10 +142,22 @@ class GNOME:
                 package['stable'] = j[2][upstream_name][-1]
                 package['unstable'] = package['stable']
             else:
-                stable = [x for x in j[2][upstream_name] if \
-                          int(x.split(".")[1]) % 2 == 0 ]
-                unstable = [x for x in j[2][upstream_name] if \
-                            int(x.split(".")[1]) % 2 == 1 ]
+                stable = []
+                unstable = []
+
+                for version in j[2][upstream_name]:
+                    v = version.split(".")
+                    major = int(v[0])
+                    minor = int(v[1])
+
+                    if obs_name in self.gnome2 and (major != 2 or minor >= 90):
+                        continue
+
+                    if minor % 2 == 0:
+                        stable.append(version)
+                    else:
+                        unstable.append(version)
+
                 if len(stable) > 0:
                     package['stable'] = stable[-1]
                 if len(unstable) > 0:

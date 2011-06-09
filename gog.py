@@ -68,7 +68,7 @@ class OBSRepository:
             if c.attrib.get("type") == "primary":
                 loc = c.find('{%s}location' %ns)
                 dbfile = loc.attrib.get("href")
-                note("Parsing %s" % dbfile)
+                debug("Parsing %s" % dbfile)
                 fpgz = urllib2.urlopen("%s/%s" % (self.url, dbfile))
                 local = open("primary.xml.gz", "w")
                 local.write(fpgz.read())
@@ -104,7 +104,7 @@ class GNOME:
         # Some packages don't follow the odd/even for unstable/stable rule or
         # we need the latest unstable version
         self.no_odd_even_rule = (
-            'libnotify', 'notification-daemon', 'dconf'
+            'libnotify', 'notification-daemon', 'dconf', 'gjs'
         )
 
     def get_package(self, name):

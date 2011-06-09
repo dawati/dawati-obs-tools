@@ -180,7 +180,13 @@ if __name__ == '__main__':
     )
 
     print("% 28s % 12s% 12s" % ('Package', 'devel:gnome', 'upstream'))
-    for obs_package, obs_version in repo.packages.iteritems():
+
+    packages = repo.packages.items()
+    packages.sort()
+    for package in packages:
+        obs_package = package[0]
+        obs_version = package[1]
+
         if obs_package in ignore:
             note("Ignored %s" % obs_package)
             continue

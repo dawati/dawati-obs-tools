@@ -196,6 +196,9 @@ if __name__ == '__main__':
         # freedesktop
         'cairo', 'telepathy-logger', 'polkit', 'polkit-gnome', 'upower',
 
+        # source forge
+        'inkscape',
+
         # own web site
         'avahi', 'libcanberra', 'sqlite', 'xulrunner', 'syncevolution',
         'webkitgtk', 'gimp',

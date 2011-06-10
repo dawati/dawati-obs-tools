@@ -195,6 +195,7 @@ if __name__ == '__main__':
     ignore = (
         # freedesktop
         'cairo', 'telepathy-logger', 'polkit', 'polkit-gnome', 'upower',
+        'dbus-glib',
 
         # source forge
         'inkscape',

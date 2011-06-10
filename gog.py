@@ -112,6 +112,9 @@ class GNOME:
         self.no_odd_even_rule = (
             'libnotify', 'notification-daemon', 'dconf', 'gjs', 'libxklavier',
             'gnome-video-effects',
+
+            # unstable version "for now"
+            'folks',
         )
 
     def get_package(self, name):

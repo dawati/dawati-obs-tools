@@ -131,7 +131,7 @@ class PackageSource:
 
 class GNOME(PackageSource):
     def __init__(self):
-        PackageSource.__init__(self, "http://ftp.gnome.org/pub/GNOME/sources")
+        PackageSource.__init__(self, "http://download.gnome.org/sources")
         # Some OBS packages have GNOME 2 versions of the software. These are
         # parallel installable with the GNOME 3 versions and need to be
         # tracked too

@@ -83,50 +83,61 @@ class OBSRepository:
                         ver = version.attrib.get("ver")
                         self.packages[name.text] = ver
 
-class GNOME:
-    def __init__(self):
-        self.base_url = "http://ftp.gnome.org/pub/GNOME/sources"
+class PackageSource:
+    # These variables are shared between all the instances of PackageSource
+    # OBS name -> upstream name
+    package_map = {
+        'librsvg2'    : 'librsvg',      'gtk3'           : 'gtk+',
+        'libunique3'  : 'libunique',    'gnome-python2'  : 'gnome-python',
+        'GConf2'      : 'GConf',        'libgtop2'       : 'libgtop',
+        'glib2'       : 'glib',         'gtksourceview2' : 'gtksourceview',
+        'gtkhtml3'    : 'gtkhtml',      'gnome-vfs2'     : 'gnome-vfs',
+        'gtk2-engines': 'gtk-engines',  'gtk2'           : 'gtk+',
+
+        'libgnomeprint22': 'libgnomeprint',
+        'libgnomeprintui22': 'libgnomeprintui',
+        'abattis-cantarell-fonts': 'cantarell-fonts',
+    }
+    # Some packages don't follow the odd/even for unstable/stable rule or
+    # we need the latest unstable version
+    no_odd_even_rule = (
+        'libnotify', 'notification-daemon', 'dconf', 'gjs', 'libxklavier',
+        'gnome-video-effects', 'gtk-doc',
+
+        # unstable version "for now"
+        'folks',
+    )
+
+    def __init__ (self, base_url):
         # upstream name -> info
         self.packages = {}
-        # OBS name -> upstream name
-        self.package_map = {
-            'librsvg2'    : 'librsvg',      'gtk3'           : 'gtk+',
-            'libunique3'  : 'libunique',    'gnome-python2'  : 'gnome-python',
-            'GConf2'      : 'GConf',        'libgtop2'       : 'libgtop',
-            'glib2'       : 'glib',         'gtksourceview2' : 'gtksourceview',
-            'gtkhtml3'    : 'gtkhtml',      'gnome-vfs2'     : 'gnome-vfs',
-            'gtk2-engines': 'gtk-engines',  'gtk2'           : 'gtk+',
+        self.base_url = base_url
 
-            'libgnomeprint22': 'libgnomeprint',
-            'libgnomeprintui22': 'libgnomeprintui',
-            'abattis-cantarell-fonts': 'cantarell-fonts',
-        }
+    def get_package(self, name):
+        obs_name = name
+        upstream_name = name
+
+        if PackageSource.package_map.has_key(name):
+            upstream_name = PackageSource.package_map[name]
+
+        if not self.packages.has_key(name):
+            self.packages[name] = self.get_package_real(obs_name, upstream_name)
+        return self.packages[name]
+
+    def get_package_real(self, name):
+        warn("subclasses must implement get_package_real()")
+        return None
+
+
+class GNOME(PackageSource):
+    def __init__(self):
+        PackageSource.__init__(self, "http://ftp.gnome.org/pub/GNOME/sources")
         # Some OBS packages have GNOME 2 versions of the software. These are
         # parallel installable with the GNOME 3 versions and need to be
         # tracked too
         self.gnome2 = (
             'gtk2', 'gtksourceview2', 'gtk2-engines',
         )
-        # Some packages don't follow the odd/even for unstable/stable rule or
-        # we need the latest unstable version
-        self.no_odd_even_rule = (
-            'libnotify', 'notification-daemon', 'dconf', 'gjs', 'libxklavier',
-            'gnome-video-effects', 'gtk-doc',
-
-            # unstable version "for now"
-            'folks',
-        )
-
-    def get_package(self, name):
-        obs_name = name
-        upstream_name = name
-
-        if self.package_map.has_key(name):
-            upstream_name = self.package_map[name]
-
-        if not self.packages.has_key(name):
-            self.packages[name] = self.get_package_real(obs_name, upstream_name)
-        return self.packages[name]
 
     def get_package_real(self, obs_name, upstream_name):
         global options
@@ -142,7 +153,7 @@ class GNOME:
             package['stable'] = None
             package['unstable'] = None
 
-            if upstream_name in self.no_odd_even_rule:
+            if upstream_name in PackageSource.no_odd_even_rule:
                 package['stable'] = j[2][upstream_name][-1]
                 package['unstable'] = package['stable']
             else:

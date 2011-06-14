@@ -1401,7 +1401,7 @@ python-imaging Imaging-([0-9.]*?)\.tar http://effbot.org/downloads/
 python-irclib DEFAULT SF-DEFAULT:python-irclib
 python-jinja2 Jinja2-(.*?).tar.gz PYPI-DEFAULT:Jinja2
 python-kid DEFAULT:kid PYPI-DEFAULT:kid
-python-lxml latest version is <a class="reference external" href="lxml-([0-9.]+)\.tgz http://codespeak.net/lxml/
+python-lxml DEFAULT:lxml PYPI-DEFAULT:lxml
 python-mako DEFAULT:Mako PYPI-DEFAULT:Mako
 python-markdown DEFAULT:Markdown PYPI-DEFAULT:Markdown
 python-markdown2 DEFAULT:markdown2 PYPI-DEFAULT:markdown2

@@ -1389,7 +1389,7 @@ python-demjson DEFAULT:demjson PYPI-DEFAULT:demjson
 python-dialog DEFAULT:pythondialog SF-DEFAULT:pythondialog
 python-distutils-extra DEFAULT LP-DEFAULT
 python-dns <a href="kits/(.*)/">Stable</a> http://www.dnspython.org/
-python-docutils DEFAULT PYPI-DEFAULT:docutils
+python-docutils DEFAULT:docutils PYPI-DEFAULT:docutils
 python-elixir Elixir-(.*?).tar.gz PYPI-DEFAULT:Elixir
 python-execnet execnet-(.*?).(?:tar.gz|zip) PYPI-DEFAULT:execnet
 python-fedora DEFAULT:python-fedora PYPI-DEFAULT:python-fedora

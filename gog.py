@@ -61,6 +61,9 @@ class Message(object):
     def debug_enabled(self):
         return self.verbose > 1
 
+    def stdout_used(self):
+        return self.fd == sys.stdout and self.verbose
+
 __rc_ups_regex = re.compile("(.*?)(-?(rc|pre|beta|alpha)([0-9]*))", re.I)
 
 def split_rc(version):
@@ -599,7 +602,8 @@ if __name__ == '__main__':
     else:
         started = not options.start_from
         progress_bar = ProgressBar('green', width=42, block='▣', empty='□')
-        progress_bar.render(0)
+        if not m.stdout_used():
+            progress_bar.render(0)
         progress = 0
 
         packages = repo.packages.items()
@@ -627,9 +631,11 @@ if __name__ == '__main__':
             time.sleep(0.100) # rate limit a bit
 
             progress += 1
-            progress_bar.render(progress * 100 / len(packages), obs_package)
+            if not m.stdout_used():
+                progress_bar.render(progress * 100 / len(packages), obs_package)
 
-        progress_bar.clear()
+        if not m.stdout_used():
+            progress_bar.clear()
 
     output_fd.write("% 28s % 12s% 12s\n" % ('Package', 'Trunk', 'upstream'))
 

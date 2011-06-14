@@ -1722,7 +1722,7 @@ tre tre-(.*?).tar.bz2 http://laurikari.net/tre/download.html
 tree tree-([0-9a-z.]+).tgz http://mama.indstate.edu/users/ice/tree/
 tremulous DEFAULT SF-DEFAULT
 tudu DEFAULT SF-DEFAULT
-tumbler DEFAULT http://git.xfce.org/apps/tumbler/
+tumbler DEFAULT http://archive.xfce.org/src/xfce/tumbler/*/
 typespeed DEFAULT SF-DEFAULT
 tzdata tzdata(.*?)\.tar\.gz ftp://elsie.nci.nih.gov/pub/
 uClibc DEFAULT http://uclibc.org/downloads/

@@ -522,6 +522,8 @@ if __name__ == '__main__':
                       help="package name")
     parser.add_option("-s", "--start-from", type="string", dest="start_from",
                       help="package name to start from")
+    parser.add_option("-o", "--output", type="string", dest="output",
+                      help="output results to file")
     parser.add_option("-v", "--verbose", action="store_true", dest="verbose")
     parser.add_option("-d", "--debug", action="store_const", const=2,
                       dest="verbose")
@@ -599,10 +601,15 @@ if __name__ == '__main__':
 
     progress_bar.clear()
 
-    print("% 28s % 12s% 12s" % ('Package', 'Trunk', 'upstream'))
+    if options.output:
+        fd = open(options.output, 'w')
+    else:
+        fd = sys.stdout
+
+    fd.write("% 28s % 12s% 12s\n" % ('Package', 'Trunk', 'upstream'))
 
     for l in display_packages:
         name = l[0]
         obs_version = l[1]
         upstream_version = l[2]
-        print "% 28s % 12s% 12s" % (name, obs_version, upstream_version)
+        fd.write("% 28s % 12s% 12s\n" % (name, obs_version, upstream_version))

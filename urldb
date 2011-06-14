@@ -232,7 +232,7 @@ darktable DEFAULT SF-DEFAULT
 db4 DB (4[0-9.]*).tar.gz< http://www.oracle.com/technetwork/database/berkeleydb/downloads/index-082944.html
 dbench dbench-(.*?)\.tar http://samba.org/ftp/tridge/dbench/
 dblatex DEFAULT SF-DEFAULT
-dbus-glib DEFAULT GNOME-DEFAULT
+dbus-glib DEFAULT http://dbus.freedesktop.org/releases/dbus-glib/
 dclib DEFAULT SF-DEFAULT:wxdcgui
 dconf DEFAULT GNOME-DEFAULT
 dcraw DEFAULT http://www.cybercom.net/~dcoffin/dcraw/archive/

@@ -362,6 +362,10 @@ class Dispatcher:
             db = open('urldb', 'r')
             for line in db:
                 line = string.strip(line)
+                if not line:
+                    continue
+                if line[0] == '#':
+                    continue
                 m = re.match(Dispatcher.package_line_regex, line)
                 if not m:
                     warn("could not parse %s" % line)

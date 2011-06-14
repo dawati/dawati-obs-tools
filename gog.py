@@ -507,6 +507,8 @@ if __name__ == '__main__':
 
     parser.add_option("-p", "--package", type="string", dest="package",
                       help="package name")
+    parser.add_option("-s", "--start-from", type="string", dest="start_from",
+                      help="package name to start from")
     parser.add_option("-v", "--verbose", action="store_true", dest="verbose")
     parser.add_option("-d", "--debug", action="store_const", const=2,
                       dest="verbose")
@@ -544,11 +546,17 @@ if __name__ == '__main__':
                                  dispatcher.get_upstream_version(name)))
 
     else:
+        started = not options.start_from
+
         packages = repo.packages.items()
         packages.sort()
         for package in packages:
             obs_package = package[0]
             obs_version = package[1]
+
+            started = started or obs_package == options.start_from
+            if not started:
+                continue
 
             if obs_package in ignore:
                 note("Ignored %s" % obs_package)

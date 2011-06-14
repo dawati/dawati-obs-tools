@@ -282,18 +282,14 @@ class Index(PackageSource):
         regex = self.urldb[obs_name][0]
         url = self.urldb[obs_name][1]
 
-        try:
-            url = self.expand_subdirs(url)
-            debug("Fetching: %s" % url)
-            page = urllib2.urlopen(url)
-            upstream_versions = re.findall(regex, page.read())
-            if not upstream_versions:
-                warn("could not parse upstream versions for %s" % obs_name)
-                return None
-            return Package(obs_name, upstream_versions)
-
-        except urllib2.HTTPError:
+        url = self.expand_subdirs(url)
+        debug("Fetching: %s" % url)
+        page = urllib2.urlopen(url)
+        upstream_versions = re.findall(regex, page.read())
+        if not upstream_versions:
+            warn("could not parse upstream versions for %s" % obs_name)
             return None
+        return Package(obs_name, upstream_versions)
 
 class GNOME(PackageSource):
     def __init__(self):
@@ -312,36 +308,32 @@ class GNOME(PackageSource):
         base = "%s/%s" % (self.base_url, upstream_name)
         url = "%s/cache.json" % base
         debug("Fetching: %s for %s" % (url, upstream_name))
-        try:
-            fp = urllib2.urlopen(url)
-            j = json.load(fp)
+        fp = urllib2.urlopen(url)
+        j = json.load(fp)
 
-            stable = []
-            unstable = []
+        stable = []
+        unstable = []
 
-            if upstream_name in PackageSource.no_odd_even_rule:
-                versions = j[2][upstream_name]
-            else:
-                for version in j[2][upstream_name]:
-                    v = version.split(".")
-                    major = int(v[0])
-                    minor = int(v[1])
+        if upstream_name in PackageSource.no_odd_even_rule:
+            versions = j[2][upstream_name]
+        else:
+            for version in j[2][upstream_name]:
+                v = version.split(".")
+                major = int(v[0])
+                minor = int(v[1])
 
-                    if obs_name in self.gnome2 and (major != 2 or minor >= 90):
-                        continue
+                if obs_name in self.gnome2 and (major != 2 or minor >= 90):
+                    continue
 
-                    if minor % 2 == 0:
-                        stable.append(version)
-                    else:
-                        unstable.append(version)
+                if minor % 2 == 0:
+                    stable.append(version)
+                else:
+                    unstable.append(version)
 
-                versions = stable
+            versions = stable
 
-            if len(versions) == 0:
-                warn("could not parse json data: %s" % j[2])
-                return None
-
-        except urllib2.HTTPError:
+        if len(versions) == 0:
+            warn("could not parse json data: %s" % j[2])
             return None
 
         return Package(obs_name, versions)
@@ -495,11 +487,17 @@ class Dispatcher:
         else:
             source = self.index
 
-        package = source.get_package(obs_name)
-        if not package:
-            return 'Not Found'
+        try:
+            package = source.get_package(obs_name)
+        except urllib2.HTTPError, e:
+            return "Error %d" % e.code
+        except urllib2.URLError, e:
+            return e.reason[1]
 
-        return package.get_latest_version()
+        if package:
+            return package.get_latest_version()
+
+        return "Not Found"
 
 if __name__ == '__main__':
     global options

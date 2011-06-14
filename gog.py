@@ -33,8 +33,6 @@ except ImportError:
 
 from progressbar import ProgressBar
 
-#obs_gnome_devel = "http://download.meego.com/live/devel:/gnome/standard/"
-obs_gnome_devel = "http://download.meego.com/snapshots/latest/repos/oss/source//"
 class Message(object):
     _instance = None
     def __new__(cls, *args, **kwargs):
@@ -157,9 +155,16 @@ class Package:
     def get_latest_version(self, stability='stable'):
         return self.versions[-1]
 
+obs_template = "http://download.meego.com/live/%s/standard"
+obs_trunk    = "http://download.meego.com/snapshots/latest/repos/oss/source"
+
 class OBSRepository:
-    def __init__(self, url):
-        self.url = url
+    def __init__(self, project):
+        if project == 'Trunk':
+            self.url = obs_trunk
+        else:
+            escaped_project = project.replace(':', ':/')
+            self.url = obs_template % escaped_project
         self.packages = {}
         self.parse_repo_data()
 
@@ -529,11 +534,12 @@ class Dispatcher:
         return "Not Found"
 
 if __name__ == '__main__':
-    global options
     parser = optparse.OptionParser()
 
+    parser.add_option("-r", "--project", type="string", dest="project",
+                      default="Trunk", help="OBS project name")
     parser.add_option("-p", "--package", type="string", dest="package",
-                      help="package name")
+                      help="OBS package name")
     parser.add_option("-s", "--start-from", type="string", dest="start_from",
                       help="package name to start from")
     parser.add_option("-o", "--output", type="string", dest="output",

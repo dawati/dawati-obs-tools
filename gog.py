@@ -351,7 +351,7 @@ class GNOME(PackageSource):
 # the Index object) and # the GNOME source that requests information on a
 # package dynamically using the GNOME-specific Source.
 class Dispatcher:
-    package_line_regex = re.compile('([^ ]*) (.*) ([^ ]*)')
+    package_line_regex = re.compile('([^ ]*) (.*?) ([^ ]*)')
     urldb = {}
 
     def __init__(self):
@@ -363,8 +363,8 @@ class Dispatcher:
                 if not m:
                     warn("could not parse %s" % line)
                     continue
-                obs_name = m.group(1)
-                regex = m.group(2)
+                obs_name = string.strip(m.group(1))
+                regex = string.strip(m.group(2))
                 url = string.strip(m.group(3))
                 # obs_name => (regex, url, tags)
                 entry = (self.resolve_regex(obs_name, regex),

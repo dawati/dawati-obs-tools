@@ -569,7 +569,7 @@ if __name__ == '__main__':
                                          upstream_version))
             time.sleep(0.2) # rate limit at 5 requests/s
 
-    print("% 28s % 12s% 12s" % ('Package', 'devel:gnome', 'upstream'))
+    print("% 28s % 12s% 12s" % ('Package', 'Trunk', 'upstream'))
 
     for l in display_packages:
         name = l[0]

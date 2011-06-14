@@ -1879,7 +1879,7 @@ xorg-x11-drv-vmmouse xf86-input-vmmouse-(.*?)\.tar\.bz2 http://xorg.freedesktop.
 xorg-x11-drv-vmware xf86-video-vmware-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/driver/
 xorg-x11-drv-void xf86-input-void-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/driver/
 xorg-x11-drv-voodoo xf86-video-voodoo-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/driver/
-xorg-x11-drv-wacom xf86-input-wacom-(.*?)\.tar\.bz2 http://sf.net/projects/linuxwacom/files/
+xorg-x11-drv-wacom DEFAULT:xf86-input-wacom SF-DEFAULT:linuxwacom
 xorg-x11-server xorg-server-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/xserver/
 xorg-x11-twm twm-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/app/
 xorg-x11-util-macros util-macros-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/util/

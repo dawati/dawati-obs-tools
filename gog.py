@@ -32,8 +32,8 @@ except ImportError:
           print("Failed to import ElementTree from any known place")
 
 
-obs_gnome_devel = "http://download.meego.com/live/devel:/gnome/standard/"
-#obs_gnome_devel = "http://download.meego.com/snapshots/latest/repos/oss/source//"
+#obs_gnome_devel = "http://download.meego.com/live/devel:/gnome/standard/"
+obs_gnome_devel = "http://download.meego.com/snapshots/latest/repos/oss/source//"
 
 def warn(message):
     print "WARNING: %s" % message

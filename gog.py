@@ -376,7 +376,10 @@ class Dispatcher:
 
                 #debug("inserting %s => (%s,%s,%s)" % (obs_name, entry[0],
                 #      entry[1], entry[2]))
-                Dispatcher.urldb[obs_name] = entry
+                if Dispatcher.urldb.has_key(obs_name):
+                    warn("Duplicate entry for %s, ignoring" % obs_name)
+                else:
+                    Dispatcher.urldb[obs_name] = entry
             debug("urldb parsed")
 
         self.index = Index(Dispatcher.urldb)

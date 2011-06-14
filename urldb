@@ -120,7 +120,6 @@ aspell-te aspell6-te-(.*?)\.tar\.bz2 http://ftp.gnu.org/gnu/aspell/dict/te/
 astyle astyle_(.*?)_linux\.tar\.gz SF-DEFAULT
 async-http-client async-http-client-([0-9.]+)\.zip https://github.com/AsyncHttpClient/async-http-client/downloads/zipball
 atk DEFAULT GNOME-DEFAULT
-atk DEFAULT GNOME-DEFAULT
 atlascpp DEFAULT:Atlas-C++ SF-DEFAULT:worldforge
 attr DEFAULT http://download.savannah.gnu.org/releases-noredirect/attr/
 audacious DEFAULT http://audacious-media-player.org/downloads
@@ -478,7 +477,6 @@ glib2 DEFAULT GNOME-DEFAULT
 glpk glpk-([0-9]+\..+?).tar.gz GNU-DEFAULT
 gmediaserver gmediaserver-(.*?).tar.gz http://download.savannah.gnu.org/releases/gmediaserver/
 gmime DEFAULT GNOME-DEFAULT
-gmp DEFAULT GNU-DEFAULT
 gmp gmp-(4\..*?)\.tar\.bz2 GNU-DEFAULT:gmp
 gmpy DEFAULT GOOGLE-DEFAULT
 gnash DIR-LISTING-DEFAULT GNU-DEFAULT
@@ -518,11 +516,9 @@ gnomeradio gnomeradio-(.*?).tar.gz http://www.wh-hms.uni-ulm.de/~mfcn/gnomeradio
 gnote DEFAULT GNOME-DEFAULT
 gnu-smalltalk DEFAULT:smalltalk GNU-DEFAULT:smalltalk
 gnubik DEFAULT GNU-DEFAULT
-gnubik DEFAULT GNU-DEFAULT
 gnucap DEFAULT GNU-DEFAULT
 gnuchess DEFAULT GNU-DEFAULT:chess
 gnugo DEFAULT GNU-DEFAULT
-gnugo gnugo-(.*?)\.tar\.gz GNU-DEFAULT
 gnujump DEFAULT GNU-DEFAULT
 gnumeric DEFAULT GNOME-DEFAULT
 gnupg gnupg-(1.*?)\.tar\. ftp://ftp.gnupg.org/gcrypt/gnupg/
@@ -743,7 +739,6 @@ libgcroots DEFAULT GOOGLE-DEFAULT:sigscheme
 libgda DEFAULT GNOME-DEFAULT
 libgdata DEFAULT GNOME-DEFAULT
 libgdl DEFAULT:gdl GNOME-DEFAULT:gdl
-libgdl DEFAULT GNOME-DEFAULT
 libgee DEFAULT GNOME-DEFAULT
 libgexiv2 http://trac.yorba.org/wiki/gexiv2 DEFAULT
 libgnome DEFAULT GNOME-DEFAULT
@@ -1046,7 +1041,6 @@ perl-DBD-Pg DEFAULT:DBD-Pg CPAN-DEFAULT
 perl-DBD-SQLite DEFAULT:DBD-SQLite CPAN-DEFAULT
 perl-DBI DEFAULT:DBI CPAN-DEFAULT
 perl-DBIx-Simple DEFAULT:DBIx-Simple CPAN-DEFAULT
-perl-Data-Dumper-Names DEFAULT:Data-Dumper-Names CPAN-DEFAULT
 perl-Data-Dumper-Names DEFAULT:Data-Dumper-Names CPAN-DEFAULT
 perl-Data-Report DEFAULT:Data-Report CPAN-DEFAULT
 perl-Data-Types DEFAULT:Data-Types CPAN-DEFAULT

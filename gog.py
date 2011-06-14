@@ -522,6 +522,12 @@ if __name__ == '__main__':
         # Uses non conventional versions that break the upstream script
         # generating the json cache file
         'dia',
+
+        # we don't parse those upstream versions
+        'libjpeg',
+
+        # sysfsutils does not show up in the linux-diag SF rss feed
+        'sysfsutils',
     )
 
     dispatcher = Dispatcher()
@@ -559,7 +565,7 @@ if __name__ == '__main__':
                 continue
 
             if obs_package in ignore:
-                note("Ignored %s" % obs_package)
+                note("Ignoring %s" % obs_package)
                 continue
 
             upstream_version = dispatcher.get_upstream_version(obs_package)

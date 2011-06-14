@@ -158,7 +158,7 @@ class Package:
     def get_latest_version(self, stability='stable'):
         return self.versions[-1]
 
-obs_template = "http://download.meego.com/live/%s/standard"
+obs_template = "http://download.meego.com/live/%s/Trunk"
 obs_trunk    = "http://download.meego.com/snapshots/latest/repos/oss/source"
 
 class OBSRepository:

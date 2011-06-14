@@ -31,6 +31,7 @@ except ImportError:
         except ImportError:
           print("Failed to import ElementTree from any known place")
 
+from progressbar import ProgressBar
 
 #obs_gnome_devel = "http://download.meego.com/live/devel:/gnome/standard/"
 obs_gnome_devel = "http://download.meego.com/snapshots/latest/repos/oss/source//"
@@ -565,19 +566,25 @@ if __name__ == '__main__':
 
     else:
         started = not options.start_from
+        progress_bar = ProgressBar('green', width=42, block='▣', empty='□')
+        progress_bar.render(0)
+        progress = 0
 
         packages = repo.packages.items()
         packages.sort()
+
         for package in packages:
             obs_package = package[0]
             obs_version = package[1]
 
             started = started or obs_package == options.start_from
             if not started:
+                progress += 1
                 continue
 
             if obs_package in ignore:
                 note("Ignoring %s" % obs_package)
+                progress += 1
                 continue
 
             upstream_version = dispatcher.get_upstream_version(obs_package)
@@ -585,7 +592,12 @@ if __name__ == '__main__':
                 display_packages.append((obs_package,
                                          obs_version,
                                          upstream_version))
-            time.sleep(0.2) # rate limit at 5 requests/s
+            time.sleep(0.100) # rate limit a bit
+
+            progress += 1
+            progress_bar.render(progress * 100 / len(packages), obs_package)
+
+    progress_bar.clear()
 
     print("% 28s % 12s% 12s" % ('Package', 'Trunk', 'upstream'))
 

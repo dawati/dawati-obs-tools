@@ -126,6 +126,7 @@ autoconf DEFAULT GNU-DEFAULT
 autogen DEFAULT GNU-DEFAULT
 automake DEFAULT GNU-DEFAULT
 autossh autossh-(.+?)\.t.*z http://www.harding.motd.ca/autossh/
+avahi DEFAULT http://avahi.org/download/
 avogadro DEFAULT SF-DEFAULT
 awstats awstats-(.*?).tar.gz http://sourceforge.net/project/showfiles.php?group_id=13764&package_id=11481
 babel DEFAULT:Babel http://ftp.edgewall.com/pub/babel/

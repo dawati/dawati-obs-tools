@@ -1689,6 +1689,16 @@ tcllib DEFAULT SF-DEFAULT
 tcpdump tcpdump-(.*?)\.tar\. http://www.tcpdump.org/release/
 tcsh tcsh-(.*?)\.00\.tar\.gz http://ftp.funet.fi/pub/unix/shells/tcsh/
 techne techne-([0-9.]*?)\.tar\.gz http://download.savannah.gnu.org/releases/techne/
+telepathy-butterfly DEFAULT http://telepathy.freedesktop.org/releases/telepathy-butterfly/
+telepathy-farsight DEFAULT http://telepathy.freedesktop.org/releases/telepathy-farsight
+telepathy-farstream DEFAULT http://telepathy.freedesktop.org/releases/telepathy-farstream
+telepathy-gabble DEFAULT http://telepathy.freedesktop.org/releases/telepathy-gabble
+telepathy-glib DEFAULT http://telepathy.freedesktop.org/releases/telepathy-glib
+telepathy-haze DEFAULT http://telepathy.freedesktop.org/releases/telepathy-haze
+telepathy-logger DEFAULT http://telepathy.freedesktop.org/releases/telepathy-logger
+telepathy-misson-control DEFAULT http://telepathy.freedesktop.org/releases/telepathy-misson-control
+telepathy-qt4 DEFAULT http://telepathy.freedesktop.org/releases/telepathy-qt4
+telepathy-qt4-yell DEFAULT http://telepathy.freedesktop.org/releases/telepathy-qt4-yell
 tellico tellico-(.*?)\.tar\.bz2 http://tellico-project.org/download
 termcap DEFAULT GNU-DEFAULT
 terminus-fonts DEFAULT:terminus-font SF-DEFAULT:terminus-font

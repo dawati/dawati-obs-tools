@@ -35,23 +35,33 @@ from progressbar import ProgressBar
 
 #obs_gnome_devel = "http://download.meego.com/live/devel:/gnome/standard/"
 obs_gnome_devel = "http://download.meego.com/snapshots/latest/repos/oss/source//"
+class Message(object):
+    _instance = None
+    def __new__(cls, *args, **kwargs):
+        if not cls._instance:
+            cls._instance = super(Message, cls).__new__(cls, *args, **kwargs)
+        return cls._instance
 
-def warn(message):
-    print "WARNING: %s" % message
+    def set_fd(self, fd):
+        self.fd = fd
 
-def note(message):
-    global options
-    if options.verbose:
-        print message
+    def set_verbosity(self, verbose):
+        self.verbose = verbose
 
-def debug(message):
-    global options
-    if options.verbose > 1:
-        print message
+    def warn(self, message):
+        self.fd.write('WARNING: ' + message + '\n')
 
-def is_debug_enabled():
-    global options
-    return options.verbose > 1
+    def note(self, message):
+        if self.verbose:
+            self.fd.write(message + '\n')
+
+    def debug(self, message):
+
+        if self.verbose > 1:
+            self.fd.write(message + '\n')
+
+    def debug_enabled(self):
+        return self.verbose > 1
 
 __rc_ups_regex = re.compile("(.*?)(-?(rc|pre|beta|alpha)([0-9]*))", re.I)
 
@@ -166,8 +176,9 @@ class OBSRepository:
         return "%s/repodata/repomd.xml" % self.url
 
     def parse_repo_data(self):
+        m = Message()
         md = self.get_repomd_path()
-        debug("Fetching %s" % md)
+        m.debug("Fetching %s" % md)
         f = urllib2.urlopen(md)
         tree = etree.ElementTree()
         tree.parse(f)
@@ -177,7 +188,7 @@ class OBSRepository:
             if c.attrib.get("type") == "primary":
                 loc = c.find('{%s}location' %ns)
                 dbfile = loc.attrib.get("href")
-                debug("Parsing %s" % dbfile)
+                m.debug("Parsing %s" % dbfile)
                 fpgz = urllib2.urlopen("%s/%s" % (self.url, dbfile))
                 local = open("primary.xml.gz", "w")
                 local.write(fpgz.read())
@@ -233,14 +244,16 @@ class PackageSource:
         return self.packages[name]
 
     def add_upstream_name_override(self, obs_name, upstream_name):
+        m = Message()
         if self.package_map.has_key(obs_name):
-            warn("duplicate upstream name override %s => %s, ignoring" % (obs_name,
-                 upstream_name))
+            m.warn("duplicate upstream name override %s => %s, ignoring" %
+                  (obs_name, upstream_name))
             return
         self.package_map[obs_name] = upstream_name
 
     def get_package_real(self, name):
-        warn("subclasses must implement get_package_real()")
+        m = Message()
+        m.warn("subclasses must implement get_package_real()")
         return None
 
 class Index(PackageSource):
@@ -287,15 +300,16 @@ class Index(PackageSource):
         return url
 
     def get_package_real(self, obs_name, upstream_name):
+        m = Message()
         regex = self.urldb[obs_name][0]
         url = self.urldb[obs_name][1]
 
         url = self.expand_subdirs(url)
-        debug("Fetching: %s" % url)
+        m.debug("Fetching: %s" % url)
         page = urllib2.urlopen(url)
         upstream_versions = re.findall(regex, page.read())
         if not upstream_versions:
-            warn("could not parse upstream versions for %s" % obs_name)
+            m.warn("could not parse upstream versions for %s" % obs_name)
             return None
         return Package(obs_name, upstream_versions)
 
@@ -311,11 +325,10 @@ class GNOME(PackageSource):
         )
 
     def get_package_real(self, obs_name, upstream_name):
-        global options
-
+        m = Message()
         base = "%s/%s" % (self.base_url, upstream_name)
         url = "%s/cache.json" % base
-        debug("Fetching: %s for %s" % (url, upstream_name))
+        m.debug("Fetching: %s for %s" % (url, upstream_name))
         fp = urllib2.urlopen(url)
         j = json.load(fp)
 
@@ -341,7 +354,7 @@ class GNOME(PackageSource):
             versions = stable
 
         if len(versions) == 0:
-            warn("could not parse json data: %s" % j[2])
+            m.warn("could not parse json data: %s" % j[2])
             return None
 
         return Package(obs_name, versions)
@@ -355,11 +368,12 @@ class Dispatcher:
     urldb = {}
 
     def __init__(self):
+        m = Message()
         self.index = Index(Dispatcher.urldb)
         self.gnome = GNOME()
 
         if not Dispatcher.urldb:
-            debug("Opening urldb")
+            m.debug("Opening urldb")
             db = open('urldb', 'r')
             for line in db:
                 line = string.strip(line)
@@ -367,13 +381,13 @@ class Dispatcher:
                     continue
                 if line[0] == '#':
                     continue
-                m = re.match(Dispatcher.package_line_regex, line)
-                if not m:
-                    warn("could not parse %s" % line)
+                match = re.match(Dispatcher.package_line_regex, line)
+                if not match:
+                    m.warn("could not parse %s" % line)
                     continue
-                obs_name = string.strip(m.group(1))
-                regex = string.strip(m.group(2))
-                url = string.strip(m.group(3))
+                obs_name = string.strip(match.group(1))
+                regex = string.strip(match.group(2))
+                url = string.strip(match.group(3))
                 # obs_name => (regex, url, tags)
                 entry = (self.resolve_regex(obs_name, regex),
                          self.resolve_url(obs_name, url),
@@ -382,18 +396,18 @@ class Dispatcher:
                 if entry[1].find('gnome.org') != -1:
                     entry[2].append('GNOME')
 
-                #debug("inserting %s => (%s,%s,%s)" % (obs_name, entry[0],
-                #      entry[1], entry[2]))
+                #m.debug("inserting %s => (%s,%s,%s)" % (obs_name, entry[0],
+                #        entry[1], entry[2]))
 
                 if Dispatcher.urldb.has_key(obs_name):
-                    warn("Duplicate entry for %s, ignoring" % obs_name)
+                    m.warn("Duplicate entry for %s, ignoring" % obs_name)
                 elif entry[0].find('DEFAULT') != -1:
-                    warn("Could not resolve regex for %s, ignoring" % obs_name)
+                    m.warn("Could not resolve regex for %s, ignoring" % obs_name)
                 elif entry[1].find('DEFAULT') != -1:
-                    warn("Could not resolve url for %s, ignoring" % obs_name)
+                    m.warn("Could not resolve url for %s, ignoring" % obs_name)
                 else:
                     Dispatcher.urldb[obs_name] = entry
-            debug("urldb parsed")
+            m.debug("urldb parsed")
 
     def resolve_regex(self, obs_name, regex):
         name = obs_name
@@ -545,6 +559,16 @@ if __name__ == '__main__':
         'sysfsutils',
     )
 
+    # Messages
+    if options.output:
+        output_fd = open(options.output, 'w')
+    else:
+        output_fd = sys.stdout
+
+    m = Message()
+    m.set_fd(output_fd)
+    m.set_verbosity(options.verbose)
+
     dispatcher = Dispatcher()
 
     # Holds the (package, obs version, upstream version) to display in the
@@ -552,13 +576,13 @@ if __name__ == '__main__':
     display_packages = []
 
     # The object representing the OBS project we are working with
-    repo = OBSRepository(obs_gnome_devel)
+    repo = OBSRepository(options.project)
 
     if options.package:
         name = options.package
 
         if not repo.has_package(name):
-            warn("could not find %s in %s" % (name, obs_gnome_devel))
+            m.warn("could not find %s in %s" % (name, options.project))
             sys.exit(1)
 
         obs_version = repo.get_version(name)
@@ -585,7 +609,7 @@ if __name__ == '__main__':
                 continue
 
             if obs_package in ignore:
-                note("Ignoring %s" % obs_package)
+                m.note("Ignoring %s" % obs_package)
                 progress += 1
                 continue
 
@@ -599,17 +623,13 @@ if __name__ == '__main__':
             progress += 1
             progress_bar.render(progress * 100 / len(packages), obs_package)
 
-    progress_bar.clear()
+        progress_bar.clear()
 
-    if options.output:
-        fd = open(options.output, 'w')
-    else:
-        fd = sys.stdout
-
-    fd.write("% 28s % 12s% 12s\n" % ('Package', 'Trunk', 'upstream'))
+    output_fd.write("% 28s % 12s% 12s\n" % ('Package', 'Trunk', 'upstream'))
 
     for l in display_packages:
         name = l[0]
         obs_version = l[1]
         upstream_version = l[2]
-        fd.write("% 28s % 12s% 12s\n" % (name, obs_version, upstream_version))
+        output_fd.write("% 28s % 12s% 12s\n" % (name, obs_version,
+                                                upstream_version))

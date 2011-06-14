@@ -231,6 +231,13 @@ class PackageSource:
             self.packages[name] = self.get_package_real(obs_name, upstream_name)
         return self.packages[name]
 
+    def add_upstream_name_override(self, obs_name, upstream_name):
+        if self.package_map.has_key(obs_name):
+            warn("duplicate upstream name override %s => %s, ignoring" % (obs_name,
+                 upstream_name))
+            return
+        self.package_map[obs_name] = upstream_name
+
     def get_package_real(self, name):
         warn("subclasses must implement get_package_real()")
         return None
@@ -347,6 +354,9 @@ class Dispatcher:
     urldb = {}
 
     def __init__(self):
+        self.index = Index(Dispatcher.urldb)
+        self.gnome = GNOME()
+
         if not Dispatcher.urldb:
             debug("Opening urldb")
             db = open('urldb', 'r')
@@ -379,9 +389,6 @@ class Dispatcher:
                 else:
                     Dispatcher.urldb[obs_name] = entry
             debug("urldb parsed")
-
-        self.index = Index(Dispatcher.urldb)
-        self.gnome = GNOME()
 
     def resolve_regex(self, obs_name, regex):
         name = obs_name
@@ -436,6 +443,7 @@ class Dispatcher:
             if name_override:
                 url = name_override.group(1)
                 name = name_override.group(2)
+
         name = urllib2.quote(name, safe='')
         if url == "SF-DEFAULT":
             url = "http://sourceforge.net/api/file/index/project-name/%s/mtime/desc/limit/20/rss" % name
@@ -472,6 +480,8 @@ class Dispatcher:
         elif url == "LP-DEFAULT":
             url = "https://launchpad.net/%s/+download" % name
         elif url == "GNOME-DEFAULT":
+            if name_override:
+                self.gnome.add_upstream_name_override(obs_name, name)
             url = "http://download.gnome.org/sources/%s/" % name
 
         return url

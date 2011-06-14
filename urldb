@@ -740,7 +740,7 @@ libgda DEFAULT GNOME-DEFAULT
 libgdata DEFAULT GNOME-DEFAULT
 libgdl DEFAULT:gdl GNOME-DEFAULT:gdl
 libgee DEFAULT GNOME-DEFAULT
-libgexiv2 http://trac.yorba.org/wiki/gexiv2 DEFAULT
+libgexiv2 DEFAULT http://yorba.org/download/gexiv2/*/
 libgnome DEFAULT GNOME-DEFAULT
 libgnome-keyring DEFAULT GNOME-DEFAULT
 libgnome-media-profiles DEFAULT GNOME-DEFAULT
@@ -1591,7 +1591,7 @@ scim-m17n DEFAULT SF-DEFAULT:scim
 scons Production\ \(([0-9.]*).*\) http://www.scons.org/download.php
 scponly \bscponly-(\d+\.[\d.]+)\.t SF-DEFAULT
 screen DEFAULT GNU-DEFAULT
-sdcv sdcv DEFAULT SF-DEFAULT
+sdcv DEFAULT SF-DEFAULT
 sdparm DEFAULT http://sg.danny.cz/sg/p/
 seamonkey DEFAULT http://www.seamonkey-project.org/releases/
 sed DEFAULT GNU-DEFAULT

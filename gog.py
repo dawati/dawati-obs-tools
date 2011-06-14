@@ -566,6 +566,9 @@ if __name__ == '__main__':
 
         # sysfsutils does not show up in the linux-diag SF rss feed
         'sysfsutils',
+
+        # Really no hope left to automate those packages
+        'rpm'
     )
 
     # Messages

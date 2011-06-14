@@ -1,4 +1,3 @@
-
 BEDTools DEFAULT GOOGLE-DEFAULT:bedtools
 CCfits DEFAULT http://heasarc.gsfc.nasa.gov/fitsio/CCfits/
 CGAL CGAL-([0-9.]*)\.tar.xz https://gforge.inria.fr/frs/?group_id=52
@@ -166,6 +165,7 @@ busybox DEFAULT http://www.busybox.net/downloads/
 byacc DEFAULT ftp://invisible-island.net/byacc/
 bygfoot DEFAULT SF-DEFAULT
 byobu DEFAULT LP-DEFAULT
+bzip2 DEFAULT http://www.bzip.org/downloads.html
 bzr DEFAULT LP-DEFAULT
 bzrtools bzrtools-(.*?).tar.gz http://bazaar-vcs.org/BzrTools
 c2050 c2050-(.*?).tar.gz http://www.prato.linux.it/~mnencia/lexmark2050/files/
@@ -193,6 +193,7 @@ chemtool chemtool-([.0-9]*?).tar.gz http://ruby.chemie.uni-freiburg.de/~martin/c
 chmsee DEFAULT GOOGLE-DEFAULT
 cifs-utils DEFAULT ftp://ftp.samba.org/pub/linux-cifs/cifs-utils/
 clisp DEFAULT http://ftp.gnu.org/gnu/clisp/latest/
+cloog DEFAULT http://www.bastoul.net/cloog/download.php
 clutter DEFAULT http://source.clutter-project.org/sources/clutter/*/
 clutter-gtk DEFAULT GNOME-DEFAULT
 cmake DEFAULT http://www.cmake.org/cmake/resources/software.html
@@ -299,6 +300,7 @@ eina DEFAULT LP-DEFAULT
 ekg ekg-(.{3,5}?).tar.gz http://ekg.chmurka.net/download.php
 ekg2 ekg2-(0.*?).tar.gz http://ekg2.org/download.php
 electric DEFAULT GNU-DEFAULT
+elfutils DEFAULT  http://fedorahosted.org/releases/e/l/elfutils/*/
 em8300 DEFAULT SF-DEFAULT:dxr3
 emacs DEFAULT GNU-DEFAULT
 emacs-auctex DEFAULT:auctex GNU-DEFAULT:auctex
@@ -378,6 +380,7 @@ gauche DEFAULT:Gauche SF-DEFAULT
 gausssum DEFAULT:GaussSum SF-DEFAULT
 gawk DEFAULT GNU-DEFAULT
 gcalctool DEFAULT GNOME-DEFAULT
+gcc DEFAULT http://ftp.gnu.org/gnu/gcc/*/
 gcin gcin-([0-9\.]*?).tar.bz2 http://cle.linux.org.tw/gcin/download/
 gcl DEFAULT GNU-DEFAULT
 gcompris DEFAULT GNU-DEFAULT
@@ -475,6 +478,7 @@ gkrellm-weather DEFAULT:gkrellweather http://sites.google.com/site/makovick/gkre
 glade3 DEFAULT GNOME-DEFAULT
 glib-networking DEFAULT GNOME-DEFAULT
 glib2 DEFAULT GNOME-DEFAULT
+glibc DEFAULT GNU-DEFAULT
 glpk glpk-([0-9]+\..+?).tar.gz GNU-DEFAULT
 gmediaserver gmediaserver-(.*?).tar.gz http://download.savannah.gnu.org/releases/gmediaserver/
 gmime DEFAULT GNOME-DEFAULT
@@ -824,6 +828,7 @@ lrmi DEFAULT SF-DEFAULT
 lrzip DEFAULT http://lrzip.kolivas.org/
 lsnipes DEFAULT http://www.ugcs.caltech.edu/~boultonj/snipes/
 lsof DEFAULT ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/
+lua DEFAULT http://www.lua.org/ftp/
 lua-filesystem DEFAULT:luafilesystem http://luaforge.net/frs/?group_id=66
 luckybackup DEFAULT SF-DEFAULT
 luma DEFAULT SF-DEFAULT
@@ -884,6 +889,7 @@ monotone DEFAULT http://monotone.ca/downloads.php?type=Tarball
 most DEFAULT ftp://space.mit.edu/pub/davis/most/*/
 mozilla-adblockplus DEFAULT:adblockplus http://hg.adblockplus.org/downloads/raw-file/tip/
 mozilla-noscript v (\d+\.\d+\.\d+\.\d+) http://noscript.net/changelog
+mpc DEFAULT http://www.multiprecision.org/index.php?prog=mpc&page=download
 mpfr DEFAULT GNU-DEFAULT
 mpi4py DEFAULT GOOGLE-DEFAULT
 mpir DEFAULT http://www.mpir.org/
@@ -929,6 +935,8 @@ nilfs-utils nilfs-utils-(.*?).tar.bz2 http://www.nilfs.org/download/
 nkf DEFAULT http://sourceforge.jp/projects/nkf/releases/
 nmap DEFAULT http://nmap.org/dist/
 notification-daemon DEFAULT GNOME-DEFAULT
+nspr DEFAULT https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/*/src/
+nss DEFAULT ftp://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/*/src/
 nted nted-([0-9.]+).tar.gz http://vsr.informatik.tu-chemnitz.de/staff/jan/nted/sources/
 ntfs-3g >ntfs-3g_ntfsprogs-(.*?)</a> http://www.tuxera.com/community/ntfs-3g-download/
 ntfsprogs DEFAULT SF-DEFAULT:linux-ntfs
@@ -1330,6 +1338,7 @@ pinpoint DEFAULT GNOME-DEFAULT
 pioneers DEFAULT SF-DEFAULT
 pitivi version is <b>([0-9]+\.[0-9]+\.[0-9]+?) http://www.pitivi.org/?go=download
 pixman DEFAULT http://xorg.freedesktop.org/archive/individual/lib/
+pkgconfig DEFAULT http://pkgconfig.freedesktop.org/releases/
 plotutils DEFAULT GNU-DEFAULT
 pm-utils DEFAULT http://pm-utils.freedesktop.org/releases/
 pokerth DEFAULT:PokerTH SF-DEFAULT
@@ -1338,10 +1347,12 @@ polkit DEFAULT http://hal.freedesktop.org/releases/
 polkit-gnome DEFAULT http://hal.freedesktop.org/releases/
 pondus DEFAULT http://www.ephys.de/software/pondus/download.htm
 pootle DEFAULT:pootle SF-DEFAULT:translate
+popt DEFAULT http://rpm5.org/files/popt/
 poster poster-(.*?).tar.bz2 ftp://ftp.kde.org/pub/kde/printing/
 postfix DEFAULT ftp://ftp.porcupine.org/mirrors/postfix-release/official/
 potrace DEFAULT SF-DEFAULT
 powertop DEFAULT http://www.lesswatts.org/projects/powertop/download.php
+ppl DEFAULT http://www.cs.unipr.it/ppl/Download/ftp/releases/LATEST/
 ppp DEFAULT ftp://ftp.samba.org/pub/ppp/
 pptp DEFAULT SF-DEFAULT:pptpclient
 primer3 primer3-([0-9.]*).*\.(?:tar|t[bglx]z|tbz2|zip) SF-DEFAULT
@@ -1760,6 +1771,7 @@ upstart DEFAULT http://upstart.at/download/*/
 usb_modeswitch usb-modeswitch-(.*?)\.tar\. http://www.draisberghof.de/usb_modeswitch/
 usb_modeswitch-data usb-modeswitch-data-(.*?)\.tar\. http://www.draisberghof.de/usb_modeswitch/
 usbutils DEFAULT http://www.kernel.org/pub/linux/utils/usb/usbutils/
+util-linux-ng DEFAULT:util-linux http://www.kernel.org/pub/linux/utils/util-linux-ng/*/
 uucp DEFAULT GNU-DEFAULT
 vala DEFAULT GNOME-DEFAULT
 valknut DEFAULT SF-DEFAULT:wxdcgui

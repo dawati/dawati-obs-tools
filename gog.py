@@ -512,19 +512,13 @@ if __name__ == '__main__':
 
     (options, args) = parser.parse_args()
 
-    # list of OBS packages to ignore (because they are in devel:gnome but not
-    # being hosted on gnome.org
+    # list of OBS packages to ignore (because they trigger an error of some
+    # kind)
     ignore = (
-        # freedesktop
-        #'telepathy-logger', 'polkit', 'polkit-gnome', 'upower', 'dbus-glib',
-
-
-        # source forge
-        #'inkscape',
-
-        # own web site
-        #'avahi', 'libcanberra', 'sqlite', 'xulrunner', 'syncevolution',
-        #'webkitgtk', 'gimp', 'media-explorer',
+        # GNOME
+        # Uses non conventional versions that break the upstream script
+        # generating the json cache file
+        'dia',
     )
 
     dispatcher = Dispatcher()

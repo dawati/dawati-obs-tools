@@ -160,6 +160,7 @@ blktrace blktrace-([0-9\.].*?).tar.bz2 http://brick.kernel.dk/snaps/
 blobby DEFAULT:blobby2-linux SF-DEFAULT
 blobwars \bblobwars-([\d.]+)(?:-dfsg)?\.t SF-DEFAULT
 bluetile HACKAGE-DEFAULT HACKAGE-DEFAULT
+bluez DEFAULT http://www.kernel.org/pub/linux/bluetooth/
 bodr DEFAULT SF-DEFAULT
 boswars DEFAULT http://www.boswars.org/dist/releases/
 bouml bouml_(.*?).tar.gz http://bouml.free.fr/download.html
@@ -1995,6 +1996,9 @@ yelp DEFAULT GNOME-DEFAULT
 ykpers DEFAULT GOOGLE-DEFAULT:yubikey-personalization
 youtube-dl /youtube-dl">([\d.]+)</a> http://rg3.github.com/youtube-dl/download.html
 ytree DEFAULT http://www.han.de/~werner/ytree.html
+yum DEFAULT http://yum.baseurl.org/download/*/
+yum-metadata-parser DEFAULT http://yum.baseurl.org/download/yum-metadata-parser/
+yum-utils DEFAULT http://yum.baseurl.org/download/yum-utils
 z88dk DEFAULT SF-DEFAULT
 zenity DEFAULT GNOME-DEFAULT
 zeroinstall-injector DEFAULT SF-DEFAULT:zero-install

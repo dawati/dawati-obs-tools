@@ -8,6 +8,8 @@ ImageMagick ImageMagick-([0-9]\.[0-9]\.[0-9]-.*?[0-9]).tar.bz2 ftp://ftp.imagema
 Miro [Mm]iro-(.*?)\.tar\. http://ftp.osuosl.org/pub/pculture.org/miro/src/
 ORBit2 DEFAULT GNOME-DEFAULT
 OpenCV DEFAULT SF-DEFAULT:opencvlibrary
+OpenEXR DEFAULT http://download.savannah.nongnu.org/releases/openexr/
+PackageKit DEFAULT http://www.packagekit.org/releases/
 PyMca pymca(.*?)-src\.t SF-DEFAULT:pymca
 PyQuante DEFAULT SF-DEFAULT:pyquante
 PyQwt DEFAULT SF-DEFAULT:pyqwt

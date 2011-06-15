@@ -195,6 +195,7 @@ cifs-utils DEFAULT ftp://ftp.samba.org/pub/linux-cifs/cifs-utils/
 clisp DEFAULT http://ftp.gnu.org/gnu/clisp/latest/
 cloog DEFAULT http://www.bastoul.net/cloog/download.php
 clutter DEFAULT http://source.clutter-project.org/sources/clutter/*/
+clutter-gst DEFAULT GNOME-DEFAULT
 clutter-gtk DEFAULT GNOME-DEFAULT
 cmake DEFAULT http://www.cmake.org/cmake/resources/software.html
 cmospwd cmospwd-([0-9\.]*?).tar.bz2 http://www.cgsecurity.org/wiki/CmosPwd
@@ -376,6 +377,8 @@ gabedit The current developement version of gabedit is ([\.0-9]{5,}) http://site
 gajim gajim-(.*?)\.tar\.bz2 http://gajim.org/downloads.php
 gamazons DEFAULT http://www.yorgalily.org/gamazons/src/
 gambit-c Download latest release \(v([0-9.]+)\): http://dynamo.iro.umontreal.ca/~gambit/wiki/index.php/Main_Page
+gamin DEFAULT GNOME-DEFAULT
+gammu DEFAULT SF-DEFAULT
 gauche DEFAULT:Gauche SF-DEFAULT
 gausssum DEFAULT:GaussSum SF-DEFAULT
 gawk DEFAULT GNU-DEFAULT

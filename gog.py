@@ -230,7 +230,7 @@ class PackageSource:
     # we need the latest unstable version
     no_odd_even_rule = (
         'libnotify', 'notification-daemon', 'dconf', 'gjs', 'libxklavier',
-        'gnome-video-effects', 'gtk-doc',
+        'gnome-video-effects', 'gtk-doc', 'gamin',
 
         # unstable version "for now"
         'folks',

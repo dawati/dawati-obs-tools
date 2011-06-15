@@ -1,11 +1,13 @@
 BEDTools DEFAULT GOOGLE-DEFAULT:bedtools
 CCfits DEFAULT http://heasarc.gsfc.nasa.gov/fitsio/CCfits/
 CGAL CGAL-([0-9.]*)\.tar.xz https://gforge.inria.fr/frs/?group_id=52
+ConsoleKit DEFAULT http://www.freedesktop.org/software/ConsoleKit/dist/
 Django DEFAULT:Django PYPI-DEFAULT
 Falcon Falcon-([0-9\.]*)\.t.*gz http://falconpl.org/project_dl/_official_rel/
 ImageMagick ImageMagick-([0-9]\.[0-9]\.[0-9]-.*?[0-9]).tar.bz2 ftp://ftp.imagemagick.org/pub/ImageMagick/
 Miro [Mm]iro-(.*?)\.tar\. http://ftp.osuosl.org/pub/pculture.org/miro/src/
 ORBit2 DEFAULT GNOME-DEFAULT
+OpenCV DEFAULT SF-DEFAULT:opencvlibrary
 PyMca pymca(.*?)-src\.t SF-DEFAULT:pymca
 PyQuante DEFAULT SF-DEFAULT:pyquante
 PyQwt DEFAULT SF-DEFAULT:pyqwt

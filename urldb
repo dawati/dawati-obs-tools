@@ -26,6 +26,7 @@ abcde DEFAULT DEBIAN-DEFAULT
 abiword >([.0-9]+?)/< http://www.abisource.com/downloads/abiword/
 abook abook-(0.*?).tar.gz http://abook.sourceforge.net/
 acl DEFAULT http://download.savannah.gnu.org/releases-noredirect/acl/
+acct DEFAULT GNU-DEFAULT
 acpid DEFAULT http://tedfelix.com/linux/acpid-netlink.html
 adf-accanthis-fonts (?s)>\s*Accanthis-Std.*?>(\d+\.\d+) http://arkandis.tuxfamily.org/adffonts.html
 adjtimex DEFAULT DEBIAN-DEFAULT
@@ -80,6 +81,7 @@ archimedes DEFAULT GNU-DEFAULT
 archivemount DEFAULT http://www.cybernoia.de/software/archivemount/
 arduino DEFAULT GOOGLE-DEFAULT
 aria2 DEFAULT SF-DEFAULT
+asciidoc DEFAULT SF-DEFAULT
 aspell DEFAULT GNU-DEFAULT
 aspell-af DEFAULT http://ftp.gnu.org/gnu/aspell/dict/af/
 aspell-ar aspell6-ar-(.*?)\.tar\.bz2 http://ftp.gnu.org/gnu/aspell/dict/ar/
@@ -127,6 +129,7 @@ atk DEFAULT GNOME-DEFAULT
 atlascpp DEFAULT:Atlas-C++ SF-DEFAULT:worldforge
 attr DEFAULT http://download.savannah.gnu.org/releases-noredirect/attr/
 audacious DEFAULT http://audacious-media-player.org/downloads
+augeas DEFAULT http://augeas.net/download/
 auto-nng auto-nng.v(.*?).tar.gz http://www.auto-nng.org/files/downloads/
 autoconf DEFAULT GNU-DEFAULT
 autogen DEFAULT GNU-DEFAULT

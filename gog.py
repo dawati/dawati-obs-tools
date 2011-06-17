@@ -33,37 +33,8 @@ except ImportError:
           print("Failed to import ElementTree from any known place")
 
 from gog.progressbar import ProgressBar
-
-class Message(object):
-    _instance = None
-    def __new__(cls, *args, **kwargs):
-        if not cls._instance:
-            cls._instance = super(Message, cls).__new__(cls, *args, **kwargs)
-        return cls._instance
-
-    def set_fd(self, fd):
-        self.fd = fd
-
-    def set_verbosity(self, verbose):
-        self.verbose = verbose
-
-    def warn(self, message):
-        self.fd.write('WARNING: ' + message + '\n')
-
-    def note(self, message):
-        if self.verbose:
-            self.fd.write(message + '\n')
-
-    def debug(self, message):
-
-        if self.verbose > 1:
-            self.fd.write(message + '\n')
-
-    def debug_enabled(self):
-        return self.verbose > 1
-
-    def stdout_used(self):
-        return self.fd == sys.stdout and self.verbose
+from gog.message import Message
+from gog.fetcher import Fetcher
 
 __rc_ups_regex = re.compile("(.*?)(-?(rc|pre|beta|alpha)([0-9]*))", re.I)
 
@@ -185,20 +156,19 @@ class OBSRepository:
         return "%s/repodata/repomd.xml" % self.url
 
     def parse_repo_data(self):
-        m = Message()
-        md = self.get_repomd_path()
-        m.debug("Fetching %s" % md)
-        f = urllib2.urlopen(md)
+        f = Fetcher()
+
+        url = self.get_repomd_path()
+        md = f.get(url)
         tree = etree.ElementTree()
-        tree.parse(f)
+        tree.parse(md)
         ns = "http://linux.duke.edu/metadata/repo"
         configs = tree.findall('{%s}data' %ns)
         for c in configs:
             if c.attrib.get("type") == "primary":
                 loc = c.find('{%s}location' %ns)
                 dbfile = loc.attrib.get("href")
-                m.debug("Parsing %s" % dbfile)
-                fpgz = urllib2.urlopen("%s/%s" % (self.url, dbfile))
+                fpgz = f.get("%s/%s" % (self.url, dbfile))
                 local = open("primary.xml.gz", "w")
                 local.write(fpgz.read())
                 local.close()
@@ -280,6 +250,8 @@ class Index(PackageSource):
 
             The globbing char needs to be enclosed by slashes like "/*/".
         """
+        f = Fetcher()
+
         glob_pattern = "/%s/" % glob_char
         glob_pos = url.find(glob_pattern)
 
@@ -290,7 +262,7 @@ class Index(PackageSource):
         url_suffix = url[glob_pos+len(glob_pattern):]
 
         if url_prefix != "":
-            dir_listing = urllib2.urlopen(url_prefix).read()
+            dir_listing = f.get(url_prefix).read()
             if not dir_listing:
                 return url
             subdirs = []
@@ -309,13 +281,13 @@ class Index(PackageSource):
         return url
 
     def get_package_real(self, obs_name, upstream_name):
-        m = Message()
+        f = Fetcher()
+
         regex = self.urldb[obs_name][0]
         url = self.urldb[obs_name][1]
 
         url = self.expand_subdirs(url)
-        m.debug("Fetching: %s" % url)
-        page = urllib2.urlopen(url)
+        page = f.get(url)
         upstream_versions = re.findall(regex, page.read())
         if not upstream_versions:
             m.warn("could not parse upstream versions for %s" % obs_name)
@@ -335,10 +307,11 @@ class GNOME(PackageSource):
 
     def get_package_real(self, obs_name, upstream_name):
         m = Message()
+        f = Fetcher()
+
         base = "%s/%s" % (self.base_url, upstream_name)
         url = "%s/cache.json" % base
-        m.debug("Fetching: %s for %s" % (url, upstream_name))
-        fp = urllib2.urlopen(url)
+        fp = f.get(url)
         j = json.load(fp)
 
         stable = []

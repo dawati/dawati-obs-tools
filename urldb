@@ -25,8 +25,8 @@ abattis-cantarell-fonts DEFAULT GNOME-DEFAULT
 abcde DEFAULT DEBIAN-DEFAULT
 abiword >([.0-9]+?)/< http://www.abisource.com/downloads/abiword/
 abook abook-(0.*?).tar.gz http://abook.sourceforge.net/
-acl DEFAULT http://download.savannah.gnu.org/releases-noredirect/acl/
 acct DEFAULT GNU-DEFAULT
+acl DEFAULT http://download.savannah.gnu.org/releases-noredirect/acl/
 acpid DEFAULT http://tedfelix.com/linux/acpid-netlink.html
 adf-accanthis-fonts (?s)>\s*Accanthis-Std.*?>(\d+\.\d+) http://arkandis.tuxfamily.org/adffonts.html
 adjtimex DEFAULT DEBIAN-DEFAULT
@@ -147,12 +147,12 @@ bcrypt DEFAULT SF-DEFAULT
 beep beep-([0-9\.]+).tar.gz http://www.johnath.com/beep/
 bfast DEFAULT SF-DEFAULT
 bibus DEFAULT SF-DEFAULT:bibus-biblio
-bigloo Current version is <font color="red">(.*?)</font> http://www-sop.inria.fr/mimosa/fp/Bigloo/bigloo.html
+bigloo "Current version is <font color=""red"">(.*?)</font>" http://www-sop.inria.fr/mimosa/fp/Bigloo/bigloo.html
 binutils binutils-(.*?\.0\.[0-9.]*?)\.tar\. http://www.kernel.org/pub/linux/devel/binutils/
 bison DEFAULT GNU-DEFAULT
 bitbake DEFAULT http://download.berlios.de/bitbake/
 bitstream-vera-fonts DEFAULT:ttf-bitstream-vera GNOME-DEFAULT:ttf-bitstream-vera
-blackbox DEFAULT  SF-DEFAULT:blackboxwm
+blackbox DEFAULT SF-DEFAULT:blackboxwm
 blazeblogger DEFAULT http://blaze.blackened.cz/downloads/
 bleachbit DEFAULT http://bleachbit-project.appspot.com/download/source/
 blender blender-(.[^-]*?)\.tar\.gz http://download.blender.org/source/
@@ -239,7 +239,7 @@ cvsps DEFAULT http://www.cobite.com/cvsps/
 cyphesis DEFAULT SF-DEFAULT:worldforge
 darcs HACKAGE-DEFAULT HACKAGE-DEFAULT
 darktable DEFAULT SF-DEFAULT
-db4 DB (4[0-9.]*).tar.gz< http://www.oracle.com/technetwork/database/berkeleydb/downloads/index-082944.html
+db4 "DB (4[0-9.]*).tar.gz<" http://www.oracle.com/technetwork/database/berkeleydb/downloads/index-082944.html
 dbench dbench-(.*?)\.tar http://samba.org/ftp/tridge/dbench/
 dblatex DEFAULT SF-DEFAULT
 dbus-glib DEFAULT http://dbus.freedesktop.org/releases/dbus-glib/
@@ -283,21 +283,21 @@ doxygen doxygen-(.*?)\.src\.tar\.gz ftp://ftp.stack.nl/pub/users/dimitri/
 drobo-utils DEFAULT http://sourceforge.net/projects/drobo-utils/files/drobo-utils/r0_6_2/
 drraw DEFAULT http://web.taranis.org/drraw/dist
 drumstick DEFAULT SF-DEFAULT
-drupal6 (?s)Recommended releases.*?>6.x-([^<]*) http://drupal.org/project/drupal
-drupal6-auto_nodetitle (?s)Recommended releases.*?>6.x-([^<]*) http://drupal.org/project/auto_nodetitle
-drupal6-backup_migrate (?s)Recommended releases.*?>6.x-([^<]*) http://drupal.org/project/backup_migrate
-drupal6-feeds (?s)Recommended releases.*?>6.x-([^<]*) http://drupal.org/project/feeds
-drupal6-login_destination (?s)Recommended releases.*?>6.x-([^<]*) http://drupal.org/project/login_destination
-drupal6-token (?s)Recommended releases.*?>6.x-([^<]*) http://drupal.org/project/token
-drupal6-views (?s)Recommended releases.*?>6.x-([^<]*) http://drupal.org/project/views
+drupal6 "(?s)Recommended releases.*?>6.x-([^<]*)" http://drupal.org/project/drupal
+drupal6-auto_nodetitle "(?s)Recommended releases.*?>6.x-([^<]*)" http://drupal.org/project/auto_nodetitle
+drupal6-backup_migrate "(?s)Recommended releases.*?>6.x-([^<]*)" http://drupal.org/project/backup_migrate
+drupal6-feeds "(?s)Recommended releases.*?>6.x-([^<]*)" http://drupal.org/project/feeds
+drupal6-login_destination "(?s)Recommended releases.*?>6.x-([^<]*)" http://drupal.org/project/login_destination
+drupal6-token "(?s)Recommended releases.*?>6.x-([^<]*)" http://drupal.org/project/token
+drupal6-views "(?s)Recommended releases.*?>6.x-([^<]*)" http://drupal.org/project/views
 ds9 DEFAULT http://hea-www.harvard.edu/saord/download/ds9/source/
-dstat latest <b>(.*?)<\/b> tarball http://dag.wieers.com/home-made/dstat/
+dstat "latest <b>(.*?)<\/b> tarball" http://dag.wieers.com/home-made/dstat/
 dumpasn1 version\s+(2\d{7})\b http://www.cs.auckland.ac.nz/~pgut001/dumpasn1.c
 dvb-apps DEFAULT:linuxtv-dvb-apps http://www.linuxtv.org/downloads/legacy/
 dvd+rw-tools DEFAULT http://fy.chalmers.se/~appro/linux/DVD+RW/tools/
 dvdauthor DEFAULT SF-DEFAULT
 dwm DEFAULT http://dwm.suckless.org/
-dx The latest released version is (.*?)\. Check http://www.opendx.org/download.html
+dx "The latest released version is (.*?)\. Check" http://www.opendx.org/download.html
 e2fsprogs DEFAULT SF-DEFAULT
 e2tools e2tools-([0-9\.]+)\.tar\.gz http://home.earthlink.net/~k_sheff/sw/e2tools/
 eclipse >([0-9]\.[0-9])</a http://download.eclipse.org/eclipse/downloads/
@@ -309,7 +309,7 @@ eina DEFAULT LP-DEFAULT
 ekg ekg-(.{3,5}?).tar.gz http://ekg.chmurka.net/download.php
 ekg2 ekg2-(0.*?).tar.gz http://ekg2.org/download.php
 electric DEFAULT GNU-DEFAULT
-elfutils DEFAULT  http://fedorahosted.org/releases/e/l/elfutils/*/
+elfutils DEFAULT http://fedorahosted.org/releases/e/l/elfutils/*/
 em8300 DEFAULT SF-DEFAULT:dxr3
 emacs DEFAULT GNU-DEFAULT
 emacs-auctex DEFAULT:auctex GNU-DEFAULT:auctex
@@ -365,9 +365,9 @@ flac DEFAULT SF-DEFAULT
 flex DEFAULT SF-DEFAULT
 fluxbox DEFAULT http://fluxbox.org/download/
 folks DEFAULT GNOME-DEFAULT
-fontconfig DEFAULT http://www.fontconfig.org/release/ 
+fontconfig DEFAULT http://www.fontconfig.org/release/
 foomatic foomatic-db-engine-(.*?\.[0-9])\.tar\. http://www.openprinting.org/download/foomatic/
-fpc The latest release is <b>([\d.]+)</b> http://www.freepascal.org/download.var
+fpc "The latest release is <b>([\d.]+)</b>" http://www.freepascal.org/download.var
 freecol DEFAULT SF-DEFAULT
 freedink DEFAULT GNU-DEFAULT
 freedroidrpg DEFAULT SF-DEFAULT:freedroid
@@ -379,12 +379,12 @@ freetype DEFAULT SF-DEFAULT
 fs_mark DEFAULT SF-DEFAULT:fsmark
 funtools funtools-(.*?).tar.gz http://www.cfa.harvard.edu/~john/funtools/
 fuse DEFAULT SF-DEFAULT
-fusecompress <a href="/tex/fusecompress/tarball/([0-9.]*)" http://github.com/tex/fusecompress/downloads
+fusecompress "<a href=""/tex/fusecompress/tarball/([0-9.]*)""" http://github.com/tex/fusecompress/downloads
 g2clib g2clib-([0-9.]*).tar http://www.nco.ncep.noaa.gov/pmb/codes/GRIB2/
-gabedit The current developement version of gabedit is ([\.0-9]{5,}) http://sites.google.com/site/allouchear/Home/gabedit/download
+gabedit "The current developement version of gabedit is ([\.0-9]{5,})" http://sites.google.com/site/allouchear/Home/gabedit/download
 gajim gajim-(.*?)\.tar\.bz2 http://gajim.org/downloads.php
 gamazons DEFAULT http://www.yorgalily.org/gamazons/src/
-gambit-c Download latest release \(v([0-9.]+)\): http://dynamo.iro.umontreal.ca/~gambit/wiki/index.php/Main_Page
+gambit-c "Download latest release \(v([0-9.]+)\):" http://dynamo.iro.umontreal.ca/~gambit/wiki/index.php/Main_Page
 gamin DEFAULT GNOME-DEFAULT
 gammu DEFAULT SF-DEFAULT
 gauche DEFAULT:Gauche SF-DEFAULT
@@ -408,7 +408,7 @@ gettext DEFAULT GNU-DEFAULT
 gforth DEFAULT GNU-DEFAULT
 gg2 DEFAULT SF-DEFAULT:ggadu
 ghasher ghasher-(.*?)\.tar\. http://asgaard.homelinux.org/code/ghasher/
-ghc GHC (.*) Released! http://haskell.org/ghc/
+ghc "GHC (.*) Released!" http://haskell.org/ghc/
 ghc-Boolean HACKAGE-DEFAULT HACKAGE-DEFAULT
 ghc-ConfigFile HACKAGE-DEFAULT HACKAGE-DEFAULT
 ghc-ForSyDe HACKAGE-DEFAULT HACKAGE-DEFAULT
@@ -591,7 +591,7 @@ gupnp DEFAULT GNOME-DEFAULT
 gupnp-av DEFAULT GNOME-DEFAULT
 gupnp-dlna DEFAULT GNOME-DEFAULT
 gupnp-vala DEFAULT GNOME-DEFAULT
-gutenprint Gutenprint (.*?) is released http://gimp-print.sourceforge.net/
+gutenprint "Gutenprint (.*?) is released" http://gimp-print.sourceforge.net/
 gv DEFAULT GNU-DEFAULT
 gvfs DEFAULT GNOME-DEFAULT
 gwsmhg DEFAULT SF-DEFAULT
@@ -614,7 +614,7 @@ hplip DEFAULT SF-DEFAULT
 html-xml-utils DEFAULT http://www.w3.org/Tools/HTML-XML-utils/
 httpcomponents-client DEFAULT http://www.apache.org/dist/httpcomponents/httpclient/source/
 httpcomponents-core DEFAULT http://www.apache.org/dist/httpcomponents/httpcore/source/
-httpd httpd-(2\.2.*?)\.tar\.bz2  http://archive.apache.org/dist/httpd/
+httpd httpd-(2\.2.*?)\.tar\.bz2 http://archive.apache.org/dist/httpd/
 httptunnel DEFAULT GNU-DEFAULT
 httrack httrack-(.*?).tar.gz http://www.httrack.com/page/2/en/index.html
 hugin DEFAULT SF-DEFAULT
@@ -678,11 +678,11 @@ kdiff3 DEFAULT SF-DEFAULT
 keepalived DEFAULT http://www.keepalived.org/software/
 keychain DEFAULT http://www.funtoo.org/en/security/keychain/intro/
 kid3 DEFAULT SF-DEFAULT
-kile Latest available stable version for KDE4: <a href="download.php">(.*?)</a>\. http://kile.sourceforge.net/
+kile "Latest available stable version for KDE4: <a href=""download.php"">(.*?)</a>\." http://kile.sourceforge.net/
 kmid2 DEFAULT:kmid SF-DEFAULT
 komparator DEFAULT SF-DEFAULT
 koules koules(.*?)-src.tar.gz http://www.ucw.cz/~hubicka/koules/English/distribution.html
-krename the last stable release is: <.*?> (.*?) </a> http://www.krename.net/
+krename "the last stable release is: <.*?> (.*?) </a>" http://www.krename.net/
 ksshaskpass (?i)\(\s*ksshaskpass\s+([^)]+)\s*\) http://www.kde-apps.org/content/show.php?content=50971
 ktikz ktikz[_-](.*?)\.tar\.gz http://www.hackenberger.at/ktikz/
 kyotocabinet DEFAULT http://fallabs.com/kyotocabinet/pkg/
@@ -742,7 +742,7 @@ libcdio DEFAULT GNU-DEFAULT
 libchamplain DEFAULT GNOME-DEFAULT
 libconfig DEFAULT http://www.hyperrealm.com/libconfig/
 libcroco DEFAULT GNOME-DEFAULT
-libdb DB (5[0-9.]*).tar.gz http://www.oracle.com/technetwork/database/berkeleydb/downloads/index.html
+libdb "DB (5[0-9.]*).tar.gz" http://www.oracle.com/technetwork/database/berkeleydb/downloads/index.html
 libdc1394 DEFAULT SF-DEFAULT
 libdmx DEFAULT http://xorg.freedesktop.org/archive/individual/lib/
 libdrm DEFAULT http://dri.freedesktop.org/libdrm/
@@ -750,7 +750,7 @@ libedit libedit-[0-9]+-([0-9]+\..+?).tar.gz http://www.thrysoee.dk/editline/
 libextractor DEFAULT GNU-DEFAULT
 libfontenc DEFAULT http://xorg.freedesktop.org/archive/individual/lib/
 libfplll DEFAULT http://perso.ens-lyon.fr/damien.stehle/index.html
-libgadu w wersji ([0-9\.]*) http://toxygen.net/libgadu/
+libgadu "w wersji ([0-9\.]*)" http://toxygen.net/libgadu/
 libgcroots DEFAULT GOOGLE-DEFAULT:sigscheme
 libgda DEFAULT GNOME-DEFAULT
 libgdata DEFAULT GNOME-DEFAULT
@@ -826,7 +826,7 @@ libxcb DEFAULT http://xcb.freedesktop.org/dist/
 libxdg-basedir libxdg-basedir-([0-9\.]+)\.tar\.gz http://n.ethz.ch/~nevillm/download/libxdg-basedir/
 libxkbfile DEFAULT http://xorg.freedesktop.org/archive/individual/lib/
 libxklavier DEFAULT GNOME-DEFAULT
-libxml2 DEFAULT ftp://xmlsoft.org/libxml2/ 
+libxml2 DEFAULT ftp://xmlsoft.org/libxml2/
 libyubikey DEFAULT GOOGLE-DEFAULT:yubico-c
 lightning DEFAULT GNU-DEFAULT
 lighttpd DEFAULT http://download.lighttpd.net/lighttpd/releases-1.4.x/
@@ -862,7 +862,7 @@ man-db DEFAULT http://download.savannah.gnu.org/releases-noredirect/man-db/
 man-pages DEFAULT http://www.kernel.org/pub/linux/docs/man-pages/
 manaworld DEFAULT:tmw SF-DEFAULT:themanaworld
 maven DEFAULT:apache-maven http://www.apache.org/dist//maven/source/
-maven-ant-tasks (\d+\.\d+[\.\d+]*) http://repo2.maven.org/maven2/org/apache/maven/maven-ant-tasks/  
+maven-ant-tasks (\d+\.\d+[\.\d+]*) http://repo2.maven.org/maven2/org/apache/maven/maven-ant-tasks/
 maven-changes-plugin (\d+\.\d+[\.\d+]*) http://repo2.maven.org/maven2/org/apache/maven/plugins/maven-changes-plugin/
 maven-checkstyle-plugin (\d+\.\d+[\.\d+]*) http://repo2.maven.org/maven2/org/apache/maven/plugins/maven-checkstyle-plugin/
 maven-dependency-plugin (\d+\.\d+[\.\d+]*) http://repo2.maven.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/
@@ -899,7 +899,7 @@ mojomojo DEFAULT:MojoMojo CPAN-DEFAULT:MojoMojo
 monotone DEFAULT http://monotone.ca/downloads.php?type=Tarball
 most DEFAULT ftp://space.mit.edu/pub/davis/most/*/
 mozilla-adblockplus DEFAULT:adblockplus http://hg.adblockplus.org/downloads/raw-file/tip/
-mozilla-noscript v (\d+\.\d+\.\d+\.\d+) http://noscript.net/changelog
+mozilla-noscript "v (\d+\.\d+\.\d+\.\d+)" http://noscript.net/changelog
 mpc DEFAULT http://www.multiprecision.org/index.php?prog=mpc&page=download
 mpfr DEFAULT GNU-DEFAULT
 mpi4py DEFAULT GOOGLE-DEFAULT
@@ -910,7 +910,7 @@ msmtp DEFAULT SF-DEFAULT
 mtd-utils DEFAULT ftp://ftp.infradead.org/pub/mtd-utils/
 mtools DEFAULT GNU-DEFAULT
 mtr DEFAULT ftp://ftp.bitwizard.nl/mtr/
-mtx DEFAULT SF-DEFAULT 
+mtx DEFAULT SF-DEFAULT
 muParser Version...([0-9]\.[0-9.]*).*muparser SF-DEFAULT:muparser
 mupdf DEFAULT http://mupdf.com/download/
 museek+ DEFAULT SF-DEFAULT:museek-plus
@@ -938,7 +938,7 @@ netpipe DEFAULT http://www.scl.ameslab.gov/netpipe/
 newsbeuter DEFAULT http://newsbeuter.org/download.html
 newsx DEFAULT ftp://ftp.tin.org/pub/news/utils/newsx/
 nfs-utils DEFAULT SF-DEFAULT:nfs
-nget nget-([^+%& ]*?).tar.gz SF-DEFAULT
+nget "nget-([^+%& ]*?).tar.gz" SF-DEFAULT
 nginx DEFAULT http://nginx.org/en/download.html
 nickle DEFAULT http://nickle.org/release/
 nicotine+ DEFAULT SF-DEFAULT:nicotine-plus
@@ -1347,7 +1347,7 @@ pigz DEFAULT http://zlib.net/pigz/
 pinentry pinentry-([0-9.]*)\.tar\.gz ftp://ftp.gnupg.org/gcrypt/pinentry/
 pinpoint DEFAULT GNOME-DEFAULT
 pioneers DEFAULT SF-DEFAULT
-pitivi version is <b>([0-9]+\.[0-9]+\.[0-9]+?) http://www.pitivi.org/?go=download
+pitivi "version is <b>([0-9]+\.[0-9]+\.[0-9]+?)" http://www.pitivi.org/?go=download
 pixman DEFAULT http://xorg.freedesktop.org/archive/individual/lib/
 pkgconfig DEFAULT http://pkgconfig.freedesktop.org/releases/
 plotutils DEFAULT GNU-DEFAULT
@@ -1413,7 +1413,7 @@ python-decoratortools DEFAULT:DecoratorTools PYPI-DEFAULT:DecoratorTools
 python-demjson DEFAULT:demjson PYPI-DEFAULT:demjson
 python-dialog DEFAULT:pythondialog SF-DEFAULT:pythondialog
 python-distutils-extra DEFAULT LP-DEFAULT
-python-dns <a href="kits/(.*)/">Stable</a> http://www.dnspython.org/
+python-dns "<a href=""kits/(.*)/"">Stable</a>" http://www.dnspython.org/
 python-docutils DEFAULT:docutils PYPI-DEFAULT:docutils
 python-elixir Elixir-(.*?).tar.gz PYPI-DEFAULT:Elixir
 python-execnet execnet-(.*?).(?:tar.gz|zip) PYPI-DEFAULT:execnet
@@ -1491,7 +1491,7 @@ python-turbokid DEFAULT:TurboKid PYPI-DEFAULT:TurboKid
 python-tw-forms DEFAULT:tw.forms PYPI-DEFAULT:tw.forms
 python-tw-jquery DEFAULT:tw.jquery PYPI-DEFAULT:tw.jquery
 python-twisted DEFAULT:Twisted http://twistedmatrix.com/trac/wiki/Downloads
-python-vobject >vobject (.*?)</a http://vobject.skyhouseconsulting.com/history.html
+python-vobject ">vobject (.*?)</a" http://vobject.skyhouseconsulting.com/history.html
 python-weberror DEFAULT:WebError PYPI-DEFAULT:WebError
 python-webflash DEFAULT:WebFlash PYPI-DEFAULT:WebFlash
 python-webhelpers DEFAULT:WebHelpers PYPI-DEFAULT:WebHelpers
@@ -1505,7 +1505,7 @@ python-zope-component zope\.component-([0-9.]+?)\.(?:tar|t[bglx]z|tbz2|zip) PYPI
 python-zope-event zope\.event-([0-9.]+?)\.(?:tar|t[bglx]z|tbz2|zip) PYPI-DEFAULT:zope.event
 python-zope-exceptions zope\.exceptions-([0-9.]+?)\.(?:tar|t[bglx]z|tbz2|zip) PYPI-DEFAULT:zope.exceptions
 python-zope-i18n zope\.i18n-([0-9.]+?)\.(?:tar|t[bglx]z|tbz2|zip) PYPI-DEFAULT:zope.i18n
-python-zope-i18nmessageid zope\.i18nmessageid-([0-9.]+?)\.(?:tar|t[bglx]z|tbz2|zip)  PYPI-DEFAULT:zope.i18nmessageid
+python-zope-i18nmessageid zope\.i18nmessageid-([0-9.]+?)\.(?:tar|t[bglx]z|tbz2|zip) PYPI-DEFAULT:zope.i18nmessageid
 python-zope-interface zope\.interface-([0-9.]+?)\.(?:tar|t[bglx]z|tbz2|zip) PYPI-DEFAULT:zope.interface
 python-zope-proxy zope\.proxy-([0-9.]+?)\.(?:tar|t[bglx]z|tbz2|zip) PYPI-DEFAULT:zope.proxy
 python-zope-schema zope\.schema-([0-9.]+?)\.(?:tar|t[bglx]z|tbz2|zip) PYPI-DEFAULT:zope.schema
@@ -1529,13 +1529,13 @@ quotatool DEFAULT http://quotatool.ekenberg.se/index.php?node=download
 qwt DEFAULT SF-DEFAULT
 radvd DEFAULT http://www.litech.org/radvd/
 rakarrack rakarrack-(.[^-]*?).tar.(?:bz2|gz) SF-DEFAULT
-rapidsvn <a href="([0-9.]+)/"> http://www.rapidsvn.org/download/release/
+rapidsvn "<a href=""([0-9.]+)/"">" http://www.rapidsvn.org/download/release/
 rb_libtorrent DEFAULT:libtorrent-rasterbar GOOGLE-DEFAULT:libtorrent
 rcs DEFAULT GNU-DEFAULT
-rcsslogplayer \"([0-9]+?\.[0-9.]+?)\" http://sourceforge.net/projects/sserver/files/rcsslogplayer/
-rcssmonitor \"([0-9]+?\.[0-9.]+?)\" http://sourceforge.net/projects/sserver/files/rcssmonitor/
-rcssserver \"([0-9]+?\.[0-9.]+?)\" http://sourceforge.net/projects/sserver/files/rcssserver/
-rcssserver3d \"([0-9]+?\.[0-9.]+?)\" http://sourceforge.net/projects/simspark/files/rcssserver3d
+rcsslogplayer "\""([0-9]+?\.[0-9.]+?)\""" http://sourceforge.net/projects/sserver/files/rcsslogplayer/
+rcssmonitor "\""([0-9]+?\.[0-9.]+?)\""" http://sourceforge.net/projects/sserver/files/rcssmonitor/
+rcssserver "\""([0-9]+?\.[0-9.]+?)\""" http://sourceforge.net/projects/sserver/files/rcssserver/
+rcssserver3d "\""([0-9]+?\.[0-9.]+?)\""" http://sourceforge.net/projects/simspark/files/rcssserver3d
 rdesktop DEFAULT SF-DEFAULT
 readline DEFAULT GNU-DEFAULT
 recode DEFAULT GNU-DEFAULT
@@ -1613,7 +1613,7 @@ scheme2js scheme2js-(.*?).tar.gz http://www-sop.inria.fr/mimosa/scheme2js/files/
 scidavis scidavis-([0-9.]*?).tar.bz2 SF-DEFAULT
 scim DEFAULT SF-DEFAULT
 scim-m17n DEFAULT SF-DEFAULT:scim
-scons Production\ \(([0-9.]*).*\) http://www.scons.org/download.php
+scons "Production\ \(([0-9.]*).*\)" http://www.scons.org/download.php
 scponly \bscponly-(\d+\.[\d.]+)\.t SF-DEFAULT
 screen DEFAULT GNU-DEFAULT
 sdcv DEFAULT SF-DEFAULT
@@ -1639,7 +1639,7 @@ sil-charis-compact-fonts \bCharisSILCompact([\d.]+)\.zip\b http://scripts.sil.or
 sil-charis-fonts \bCharisSIL([\d.]+)\.zip\b http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=CharisSIL_download
 sil-lateef-fonts \bLateefRegOT_([\d.]+)\.zip\b http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=ArabicFonts_Download
 sil-scheherazade-fonts \bScheherazadeRegOT_([\d.]+)\.zip\b http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=ArabicFonts_Download
-simspark \"([0-9]+?\.[0-9.]+?)\" http://sourceforge.net/projects/simspark/files/simspark/
+simspark "\""([0-9]+?\.[0-9.]+?)\""" http://sourceforge.net/projects/simspark/files/simspark/
 simulavr DEFAULT http://download.savannah.gnu.org/releases-noredirect/simulavr/
 sipwitch DEFAULT GNU-DEFAULT
 sisu DEFAULT https://github.com/sonatype/sisu/downloads
@@ -1681,7 +1681,7 @@ stgit stgit-(.*?).tar.gz http://homepage.ntlworld.com/cmarinas/stgit/
 stix-fonts \bSTIXv([\d.]+)\.zip SF-DEFAULT:stixfonts
 stow DEFAULT GNU-DEFAULT
 strace DEFAULT SF-DEFAULT
-strigi strigi version (.*?) \([2-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]\) http://www.vandenoever.info/software/strigi/
+strigi "strigi version (.*?) \([2-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]\)" http://www.vandenoever.info/software/strigi/
 subdownloader DEFAULT LP-DEFAULT
 subversion DEFAULT http://subversion.tigris.org/servlets/ProjectDocumentList?folderID=260
 sudo DEFAULT http://www.sudo.ws/sudo/dist/
@@ -1741,7 +1741,7 @@ tin DEFAULT ftp://ftp.tin.org/pub/news/clients/tin/stable/
 tintin DEFAULT SF-DEFAULT
 tla DEFAULT GNU-DEFAULT:gnu-arch
 tmux DEFAULT SF-DEFAULT
-tomcat-native href="(\d+\.[^/"]+) http://www.apache.org/dist/tomcat/tomcat-connectors/native/
+tomcat-native "href=""(\d+\.[^/""]+)" http://www.apache.org/dist/tomcat/tomcat-connectors/native/
 tomcat5 DEFAULT http://www.apache.org/dist/tomcat/tomcat-5/*/src/
 tomcat6 DEFAULT http://www.apache.org/dist/tomcat/tomcat-6/*/src/
 torque DEFAULT http://www.clusterresources.com/downloads/torque/
@@ -1806,7 +1806,7 @@ vim-latex vim-latex-(.*?).tar.gz SF-DEFAULT
 virtaal DEFAULT:virtaal SF-DEFAULT:translate
 vlgothic-fonts DEFAULT:VLGothic http://sourceforge.jp/projects/vlgothic/releases/
 vmpsd DEFAULT SF-DEFAULT:vmps
-vorbis-tools DEFAULT  http://downloads.xiph.org/releases/vorbis/
+vorbis-tools DEFAULT http://downloads.xiph.org/releases/vorbis/
 vsftpd DEFAULT ftp://vsftpd.beasts.org/users/cevans/
 vte DEFAULT GNOME-DEFAULT
 vttest DEFAULT ftp://invisible-island.net/vttest/
@@ -1827,9 +1827,9 @@ wireshark DEFAULT SF-DEFAULT
 wol DEFAULT SF-DEFAULT:wake-on-lan
 wordnet WordNet-([0-9.]*)\.[tz][ai][rp] http://wordnet.princeton.edu/wordnet/download/
 wormux wormux-([0-9\.]*?).tar.bz2 http://download.gna.org/wormux
-wp_tray ">([0-9.]+)</a> http://freshmeat.net/projects/wp_tray/
+wp_tray """>([0-9.]+)</a>" http://freshmeat.net/projects/wp_tray/
 wpa_supplicant wpa_supplicant-(0\.7\..*?)\.tar\.gz http://w1.fi/releases/
-wv ">([0-9]\.[0-9]\.[0-9])/</a> http://www.abisource.com/downloads/wv/
+wv """>([0-9]\.[0-9]\.[0-9])/</a>" http://www.abisource.com/downloads/wv/
 wvdial DEFAULT http://alumnit.ca/wiki/index.php?page=DownloadReleases
 wxGTK DEFAULT http://www.wxwidgets.org/downloads/
 x-tile x-tile-(.*?)\.tar\.gz http://www.giuspen.com/software/
@@ -1843,7 +1843,7 @@ xbacklight DEFAULT http://xorg.freedesktop.org/releases/individual/app/
 xbean ([0-9]\.[0-9.]+)/ http://repo2.maven.org/maven2/org/apache/xbean/xbean/
 xboard DEFAULT GNU-DEFAULT
 xcb-util DEFAULT http://xcb.freedesktop.org/dist/
-xchat Source: (.*?)</a> http://www.xchat.org/
+xchat "Source: (.*?)</a>" http://www.xchat.org/
 xchm DEFAULT SF-DEFAULT
 xcompmgr DEFAULT http://xorg.freedesktop.org/archive/individual/app/
 xdelta xdelta(3\..*?)\.tar\.gz GOOGLE-DEFAULT
@@ -1873,7 +1873,7 @@ xorg-x11-drv-aiptek xf86-input-aiptek-(.*?)\.tar\.bz2 http://xorg.freedesktop.or
 xorg-x11-drv-apm xf86-video-apm-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/driver/
 xorg-x11-drv-ark xf86-video-ark-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/driver/
 xorg-x11-drv-ast xf86-video-ast-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/driver/
-xorg-x11-drv-ati xf86-video-ati-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/driver/ 
+xorg-x11-drv-ati xf86-video-ati-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/driver/
 xorg-x11-drv-chips xf86-video-chips-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/driver/
 xorg-x11-drv-cirrus xf86-video-cirrus-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/driver/
 xorg-x11-drv-dummy xf86-video-dummy-(.*?)\.tar\.bz2 http://xorg.freedesktop.org/archive/individual/driver/
@@ -1994,7 +1994,7 @@ yasm DEFAULT http://www.tortall.net/projects/yasm/releases/
 yaz DEFAULT http://ftp.indexdata.dk/pub/yaz/
 yelp DEFAULT GNOME-DEFAULT
 ykpers DEFAULT GOOGLE-DEFAULT:yubikey-personalization
-youtube-dl /youtube-dl">([\d.]+)</a> http://rg3.github.com/youtube-dl/download.html
+youtube-dl "/youtube-dl"">([\d.]+)</a>" http://rg3.github.com/youtube-dl/download.html
 ytree DEFAULT http://www.han.de/~werner/ytree.html
 yum DEFAULT http://yum.baseurl.org/download/*/
 yum-metadata-parser DEFAULT http://yum.baseurl.org/download/yum-metadata-parser/
@@ -2004,6 +2004,6 @@ zenity DEFAULT GNOME-DEFAULT
 zeroinstall-injector DEFAULT SF-DEFAULT:zero-install
 zidrav DEFAULT:zidrav4unix SF-DEFAULT
 zile DEFAULT GNU-DEFAULT
-zlib zlib ([0-9]\.[0-9]\.*?[0-9]) http://www.zlib.net/
+zlib "zlib ([0-9]\.[0-9]\.*?[0-9])" http://www.zlib.net/
 znc DEFAULT SF-DEFAULT
 zzuf zzuf-(.+?)\.t http://libcaca.zoy.org/wiki/zzuf

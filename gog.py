@@ -9,6 +9,7 @@ import re
 import time
 import optparse
 import string
+import csv
 from distutils import version
 try:
   from lxml import etree
@@ -372,7 +373,6 @@ class GNOME(PackageSource):
 # the Index object) and # the GNOME source that requests information on a
 # package dynamically using the GNOME-specific Source.
 class Dispatcher:
-    package_line_regex = re.compile('([^ ]*) (.*) ([^ ]*)')
     urldb = {}
 
     def __init__(self):
@@ -381,21 +381,22 @@ class Dispatcher:
         self.gnome = GNOME()
 
         if not Dispatcher.urldb:
+            csv.register_dialect('urldb', delimiter=' ', quotechar='"',
+                                 lineterminator='\n', quoting=csv.QUOTE_MINIMAL)
             m.debug("Opening urldb")
             db = open('urldb', 'r')
-            for line in db:
-                line = string.strip(line)
-                if not line:
+            reader = csv.reader(db, dialect='urldb')
+            for fields in reader:
+                if len(fields) == 0:
                     continue
-                if line[0] == '#':
+                if fields[0][0] == '#':
                     continue
-                match = re.match(Dispatcher.package_line_regex, line)
-                if not match:
-                    m.warn("could not parse %s" % line)
+                if len(fields) != 3:
+                    m.warn("expecting 3 fields %s" % fields)
                     continue
-                obs_name = string.strip(match.group(1))
-                regex = string.strip(match.group(2))
-                url = string.strip(match.group(3))
+                obs_name = string.strip(fields[0])
+                regex = string.strip(fields[1])
+                url = string.strip(fields[2])
                 # obs_name => (regex, url, tags)
                 entry = (self.resolve_regex(obs_name, regex),
                          self.resolve_url(obs_name, url),
@@ -404,8 +405,8 @@ class Dispatcher:
                 if entry[1].find('gnome.org') != -1:
                     entry[2].append('GNOME')
 
-                #m.debug("inserting %s => (%s,%s,%s)" % (obs_name, entry[0],
-                #        entry[1], entry[2]))
+                m.debug("inserting %s => (%s,%s,%s)" % (obs_name, entry[0],
+                        entry[1], entry[2]))
 
                 if Dispatcher.urldb.has_key(obs_name):
                     m.warn("Duplicate entry for %s, ignoring" % obs_name)

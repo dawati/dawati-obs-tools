@@ -1,0 +1,235 @@
+#!/usr/bin/python -tt
+
+#    Copyright (c) 2012 Intel Corporation
+#
+#    This program is free software; you can redistribute it and/or modify it
+#    under the terms of the GNU General Public License as published by the Free
+#    Software Foundation; version 2 of the License
+#
+#    This program is distributed in the hope that it will be useful, but
+#    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+#    or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+#    for more details.
+#
+#    You should have received a copy of the GNU General Public License along
+#    with this program; if not, write to the Free Software Foundation, Inc., 59
+#    Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+
+from __future__ import with_statement
+
+import os,sys
+import optparse
+import glob
+import re
+
+from dawati import logger
+
+commands = ('update', )
+
+class SpecFile:
+    def __init__(self, filename):
+        re_pair = re.compile('^\s*(?P<key>[a-zA-Z0-9]+)\s*:\s*(?P<value>.*)\s*$')
+        re_source = re.compile('Source[0-9]+')
+
+        self.filename = filename
+        self.pairs = {}
+        self.sources = []
+
+        for line in open(filename):
+            match = re_pair.search(line)
+            if not match:
+                continue
+
+            key = match.group('key')
+            value = match.group('value')
+
+            if key and value:
+
+                if re_source.match(key):
+                    self.sources.append(value)
+                    continue
+
+                self.pairs[key] = value
+
+    def name (self):
+        return self.pairs['Name']
+
+    def version(self):
+        return self.pairs['Version']
+
+    def _replace_major_minor(self, line, new_version):
+        re_mmm = re.compile('^(?P<major>[0-9]+)\.(?P<minor>[0-9]+)\.(?P<micro>[0-9]+)$')
+        old_match = re_mmm.match(self.version())
+        new_match = re_mmm.match(new_version)
+        if old_match and new_match:
+            old_mm = old_match.group('major') + "." + old_match.group('minor')
+            new_mm = new_match.group('major') + "." + new_match.group('minor')
+            return line.replace(old_mm, new_mm)
+        else:
+            return line
+
+    def _resolve_url(self, url, new_version=None):
+
+        url = url.replace('%{name}', self.name())
+
+        if new_version:
+            url = self._replace_major_minor(url, new_version)
+            url = url.replace('%{version}', new_version)
+        else:
+            url = url.replace('%{version}', self.version())
+
+        return url
+
+    def _download_tarball(self, new_version=None):
+
+        for source in self.sources:
+            if (not source.startswith('http://')  and
+                not source.startswith('https://') and
+                not source.startswith('ftp://')):
+               continue
+
+            # download the new tarball
+            url = self._resolve_url(source, new_version)
+
+            tarball = os.path.basename(url)
+            if os.path.isfile(tarball):
+                continue
+
+            logger.info('Downloading %s' % url)
+
+            import glob
+            import urlgrabber
+            from urlgrabber.progress import text_progress_meter
+            try:
+                urlgrabber.urlgrab(url, tarball,
+                                   progress_obj = text_progress_meter())
+            except urlgrabber.grabber.URLGrabError, e:
+                if e.errno == 14: # HTTPError
+                    logger.warning('%s Not Found!' % url)
+                raise e
+
+            # remove the old one
+            old_tarball = os.path.basename(self._resolve_url(source))
+            try:
+                logger.info('Remove %s' % old_tarball)
+                os.remove(old_tarball)
+            except OSError:
+                pass
+
+    def _bump_version_url(self, new_version):
+        from tempfile import mkstemp
+        from shutil import move
+
+        re_version = re.compile('^(?P<prefix>\s*Version\s*:\s*).*$')
+        re_url = re.compile('^\s*Source[0-9]:\s*(http://|https://|ftp)')
+
+        #Create temp file
+        fd, abs_path = mkstemp()
+        new_file = open(abs_path,'w')
+
+        for line in open(self.filename):
+            if re_version.match(line):
+                line = re_version.sub('\g<prefix>' + new_version, line)
+
+            if re_url.match(line):
+                line = self._replace_major_minor(line, new_version)
+
+            new_file.write(line)
+
+        new_file.close()
+        os.close(fd)
+
+        move(abs_path, self.filename)
+
+    def update(self, new_version):
+        # replace the tarball by the new one
+        try:
+            self._download_tarball(new_version)
+        except KeyboardInterrupt:
+            logger.warning('Downloading interrupted by ^C')
+
+        # bump version and URL
+        self._bump_version_url(new_version)
+
+def parse_options(args):
+    import dawati.__version__
+    global usage
+
+    usage = "Usage: dawati-obs command [option]"
+    parser = optparse.OptionParser(usage,
+                                   version=dawati.__version__.VERSION)
+
+    parser.add_option("-s", "--spec-file", type="string",
+                      dest="spec_file", default=None,
+                      help="Path of the spec file")
+
+    parser.add_option("-n", "--non-interactive", action="store_true",
+                      dest="non_interactive", default=False,
+                      help="Non interactive running, to use default answers")
+
+    (options, args) = parser.parse_args()
+    if not args:
+        logger.error(usage)
+        sys.exit(1)
+
+    return (options, args)
+
+if __name__ == '__main__':
+    olddir = None
+
+    (options, args) = parse_options(sys.argv[2:])
+
+    command = args[0]
+    args = args[1:]
+
+    if command not in commands:
+        logger.error("Command must be one of '%s'" % " ".join(commands))
+        sys.exit(1)
+
+    if options.non_interactive:
+        logger.set_mode(False)
+
+    if not options.spec_file:
+        # no spec-path specified, search in CWD
+        specs = glob.glob('*.spec')
+        if not specs:
+            logger.error('Cannot find spec file(*.spec) in current directory')
+            sys.exit(1)
+        elif len(specs) > 1:
+            logger.error('Found multiple spec files in current directory')
+            sys.exit(1)
+
+        spec_file = specs[0]
+    else:
+        # check if the input file exists
+        if not os.path.isfile(options.spec_file):
+            # input file does not exist
+            logger.error("%s: File does not exist" % yaml_fpath)
+            sys.exit(1)
+
+        spec_file = options.spec_file
+
+        # change to the spec file directory
+        if spec_file.find(os.path.sep) != -1:
+            olddir = os.path.curdir
+            cwd = os.path.dirname(spec_file)
+            os.chdir(cwd)
+
+            spec_file = os.path.basename(spec_file)
+
+    logger.info("Using %s" % spec_file)
+
+    spec = SpecFile(spec_file)
+
+    if command == 'update':
+        if not args:
+            logger.error ("Usage: dawati-obs update new_version")
+            sys.exit(1)
+
+        new_version = args[0]
+
+        logger.info("Updating to %s" % new_version)
+        spec.update(new_version)
+
+    if (olddir):
+        os.chdir(cwd)

@@ -1,3 +1,6 @@
-.*sw?
 *.pyc
-primary.xml.gz
+.*sw?
+build
+dawati/__version__.py
+dawati_obs_tools.egg-info
+dist

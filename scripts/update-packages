@@ -1,0 +1,19 @@
+#!/bin/sh
+
+OBS_PROJECT=$1
+PACKAGES_LIST=$2
+
+# CSV file is name;obs_version;upstream_version (output of dawati-obs-compare)
+# The first line is column headers, so skip it.
+for line in `cat $PACKAGES_LIST | tail -n+2`; do
+    csv=(${line//;/ })
+    name=${csv[0]}
+    version=${csv[2]}
+
+    osc co $OBS_PROJECT $name
+    cd $OBS_PROJECT/$name
+    dawati-obs update $version
+    osc ar
+    osc commit -m "Update to $version"
+    cd ..
+done

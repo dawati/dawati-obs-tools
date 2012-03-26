@@ -521,6 +521,9 @@ if __name__ == '__main__':
                       default="Trunk", help="OBS project name")
     parser.add_option("-p", "--package", type="string", dest="package",
                       help="OBS package name")
+    parser.add_option("-f", "--packages-file", type="string",
+                      dest="packages_file", help="File with a list of packages \
+                                                  to process")
     parser.add_option("-s", "--start-from", type="string", dest="start_from",
                       help="package name to start from")
     parser.add_option("-o", "--output", type="string", dest="output",
@@ -588,8 +591,23 @@ if __name__ == '__main__':
             progress_bar.render(0)
         progress = 0
 
-        packages = repo.packages.items()
-        packages.sort()
+        # If we are given a list of packages to inspect, use it. Otherwise the
+        # package list is all the packages in the given OBS repo.
+        if options.packages_file:
+            packages = []
+            for p in open(options.packages_file):
+                p = p.strip()
+                # only add the packages that are in the OBS repo (the ones
+                # we can actually compare with something...)
+                if repo.has_package(p):
+                    obs_version = repo.get_version(p)
+                    upstream_version = dispatcher.get_upstream_version(p)
+                    packages.append((p,obs_version))
+            # We let the user sort the files as he/she wants in the given file
+            # no need to sort then.
+        else:
+            packages = repo.packages.items()
+            packages.sort()
 
         for package in packages:
             obs_package = package[0]

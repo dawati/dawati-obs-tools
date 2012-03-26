@@ -209,6 +209,7 @@ cmake DEFAULT http://www.cmake.org/cmake/resources/software.html
 cmospwd cmospwd-([0-9\.]*?).tar.bz2 http://www.cgsecurity.org/wiki/CmosPwd
 coccinelle DEFAULT http://coccinelle.lip6.fr/download.php
 coda DEFAULT http://www.coda.cs.cmu.edu/pub/coda/src/
+colord DEFAULT http://www.freedesktop.org/software/colord/releases/
 colordiff DEFAULT http://colordiff.sourceforge.net/
 compiz DEFAULT:compiz-core http://releases.compiz.org/*/
 conduit DEFAULT GNOME-DEFAULT
@@ -348,6 +349,7 @@ expat DEFAULT SF-DEFAULT
 expect \bexpect([\d.]+)\.t SF-DEFAULT
 ext3grep DEFAULT GOOGLE-DEFAULT
 f-spot DEFAULT GNOME-DEFAULT
+farstream DEFAULT http://freedesktop.org/software/farstream/releases/farstream/
 fatrat fatrat-(.*?).tar.gz http://www.dolezel.info/download/data/fatrat/
 fbreader fbreader-sources-(.*?).tgz http://fbreader.org/downloads.php
 fdupes fdupes-(.*?).tar.gz http://netdial.caribe.net/~adrian2/programs/
@@ -512,6 +514,7 @@ gnome-icon-theme-symbolic DEFAULT GNOME-DEFAULT
 gnome-keyring DEFAULT GNOME-DEFAULT
 gnome-menus DEFAULT GNOME-DEFAULT
 gnome-mime-data DEFAULT GNOME-DEFAULT
+gnome-online-accounts DEFAULT GNOME-DEFAULT
 gnome-packagekit DEFAULT GNOME-DEFAULT
 gnome-password-generator DEFAULT SF-DEFAULT:gnome-password
 gnome-python2 DEFAULT GNOME-DEFAULT
@@ -570,6 +573,9 @@ gscan2pdf DEFAULT SF-DEFAULT
 gsettings-desktop-schemas DEFAULT GNOME-DEFAULT
 gsl DEFAULT GNU-DEFAULT
 gssdp DEFAULT GNOME-DEFAULT
+gst-plugins-bad-free DEFAULT http://gstreamer.freedesktop.org/src/gst-plugins-bad/
+gst-plugins-base DEFAULT http://gstreamer.freedesktop.org/src/gst-plugins-base/
+gst-plugins-good DEFAULT http://gstreamer.freedesktop.org/src/gst-plugins-good/
 gstreamer DEFAULT http://gstreamer.freedesktop.org/src/gstreamer/
 gstreamer-rtsp DEFAULT http://cgit.freedesktop.org/gstreamer/gst-rtsp-server/
 gthumb DEFAULT GNOME-DEFAULT
@@ -690,6 +696,7 @@ latencytop DEFAULT http://www.latencytop.org/download.php
 latex-mk DEFAULT SF-DEFAULT
 latex2rtf DEFAULT SF-DEFAULT
 lbzip2 DEFAULT http://lacos.web.elte.hu/pub/lbzip2/
+lcms2 DEFAULT SF-DEFAULT:lcms
 ldtp DEFAULT http://ldtp.freedesktop.org/wiki/Download
 ledger ledger-([0-9.]+)\.tar\.gz https://github.com/jwiegley/ledger/downloads
 less DEFAULT GNU-DEFAULT
@@ -768,6 +775,7 @@ libgnomeprintui22 DEFAULT GNOME-DEFAULT
 libgnomeui DEFAULT GNOME-DEFAULT
 libgsf DEFAULT GNOME-DEFAULT
 libgtop2 DEFAULT GNOME-DEFAULT
+libgusb DEFAULT http://people.freedesktop.org/~hughsient/releases/
 libgweather DEFAULT GNOME-DEFAULT
 libhangul DEFAULT http://kldp.net/projects/hangul/download
 libharu DEFAULT http://libharu.org/files/
@@ -981,6 +989,7 @@ os-prober DEFAULT DEBIAN-DEFAULT
 osmo DEFAULT SF-DEFAULT:osmo-pim
 osslsigncode DEFAULT SF-DEFAULT
 ovaldi DEFAULT SF-DEFAULT
+p11-kit DEFAULT http://p11-glue.freedesktop.org/releases/
 p7zip p7zip_([0-9.]*?)_src_all.tar.bz2 SF-DEFAULT
 pal DEFAULT SF-DEFAULT:palcal
 pam DEFAULT http://www.us.kernel.org/pub/linux/libs/pam/library/
@@ -1546,6 +1555,7 @@ regionset regionset-([.0-9]*?).tar.gz http://linvdr.org/download/regionset/
 reiserfs-utils reiserfsprogs-(.*?)\.tar\.bz2 http://www.kernel.org/pub/linux/utils/fs/reiserfs/
 remmina DEFAULT SF-DEFAULT
 reptyr DEFAULT https://github.com/nelhage/reptyr/downloads
+rest DEFAULT GNOME-DEFAULT
 rfkill DEFAULT http://wireless.kernel.org/download/rfkill/
 rlwrap rlwrap-(.*?).tar.gz http://utopia.knoware.nl/~hlub/rlwrap/
 rmic-maven-plugin (\d+\.\d+[\.\d+]*) http://repo2.maven.org/maven2/org/codehaus/mojo/rmic-maven-plugin/
@@ -1749,6 +1759,7 @@ tortoisehg tortoisehg-(.*?).tar.gz http://bitbucket.org/tortoisehg/targz/downloa
 totem DEFAULT GNOME-DEFAULT
 totem-pl-parser DEFAULT GNOME-DEFAULT
 towhee DEFAULT SF-DEFAULT
+tracker DEFAULT GNOME-DEFAULT
 translate-toolkit DEFAULT:translate-toolkit SF-DEFAULT:translate
 transmission DEFAULT http://www.transmissionbt.com/download.php
 transmission-remote-cli \bVERSION\s*=\s*'([^']+)' http://github.com/fagga/transmission-remote-cli/raw/master/transmission-remote-cli.py

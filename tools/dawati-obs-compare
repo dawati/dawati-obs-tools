@@ -195,6 +195,7 @@ class PackageSource:
         'libgnomeprint22': 'libgnomeprint',
         'libgnomeprintui22': 'libgnomeprintui',
         'abattis-cantarell-fonts': 'cantarell-fonts',
+        'gst-plugins-bad-free': 'gst-plugins-bad',
     }
     # Some packages don't follow the odd/even for unstable/stable rule or
     # we need the latest unstable version

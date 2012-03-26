@@ -23,6 +23,8 @@ develop: all install-data
 	$(PYTHON) setup.py develop
 
 install-data:
+	install -d ${DESTDIR}/usr/share/dawati-obs
+	install -m 644 data/urldb ${DESTDIR}/usr/share/dawati-obs
 
 clean:
 	rm -rf build/

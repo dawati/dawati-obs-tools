@@ -343,8 +343,8 @@ class GNOME(PackageSource):
 
 # We have 2 sources to get package info. The urldb with a database of packages
 # ie. where to get information about new tarbals (which will be used mainly by
-# the Index object) and # the GNOME source that requests information on a
-# package dynamically using the GNOME-specific Source.
+# the Index object) and the GNOME source that requests information on a package
+# dynamically using the GNOME-specific Source.
 class Dispatcher:
     urldb = {}
 

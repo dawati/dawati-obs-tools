@@ -619,11 +619,12 @@ if __name__ == '__main__':
         if not m.stdout_used():
             progress_bar.clear()
 
-    output_fd.write("% 28s % 12s% 12s\n" % ('Package', 'Trunk', 'upstream'))
+    output_fd.write("% 32s % 15s% 15s\n" %
+                    ('Package', options.project, 'upstream'))
 
     for l in display_packages:
         name = l[0]
         obs_version = l[1]
         upstream_version = l[2]
-        output_fd.write("% 28s % 12s% 12s\n" % (name, obs_version,
+        output_fd.write("% 32s % 15s% 15s\n" % (name, obs_version,
                                                 upstream_version))

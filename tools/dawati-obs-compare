@@ -511,6 +511,12 @@ class Dispatcher:
 
         return "Not Found"
 
+def pretty_output(fd, triplet):
+    fd.write("% 32s % 15s% 15s\n" % (triplet[0], triplet[1], triplet[2]))
+
+def csv_output(fd, triplet):
+    fd.write("%s;%s;%s\n" % (triplet[0], triplet[1], triplet[2]))
+
 if __name__ == '__main__':
 
     config.load()
@@ -528,6 +534,8 @@ if __name__ == '__main__':
                       help="package name to start from")
     parser.add_option("-o", "--output", type="string", dest="output",
                       help="output results to file")
+    parser.add_option("-t", "--output-type", type="string", dest="output_type",
+                      help="How to format the output (pretty*,csv)")
     parser.add_option("-v", "--verbose", action="store_true", dest="verbose")
     parser.add_option("-d", "--debug", action="store_const", const=2,
                       dest="verbose")
@@ -561,6 +569,12 @@ if __name__ == '__main__':
     m = message.Message()
     m.set_fd(output_fd)
     m.set_verbosity(options.verbose)
+
+    # select the printer
+    if options.output_type == "csv":
+        output = csv_output
+    else:
+        output = pretty_output
 
     dispatcher = Dispatcher()
 
@@ -637,12 +651,10 @@ if __name__ == '__main__':
         if not m.stdout_used():
             progress_bar.clear()
 
-    output_fd.write("% 32s % 15s% 15s\n" %
-                    ('Package', options.project, 'upstream'))
+    output(output_fd, ('Package', options.project, 'upstream'))
 
     for l in display_packages:
         name = l[0]
         obs_version = l[1]
         upstream_version = l[2]
-        output_fd.write("% 32s % 15s% 15s\n" % (name, obs_version,
-                                                upstream_version))
+        output(output_fd, (name, obs_version, upstream_version))

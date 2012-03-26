@@ -32,7 +32,7 @@ commands = ('update', )
 class SpecFile:
     def __init__(self, filename):
         re_pair = re.compile('^\s*(?P<key>[a-zA-Z0-9]+)\s*:\s*(?P<value>.*)\s*$')
-        re_source = re.compile('Source[0-9]+')
+        re_source = re.compile('Source[0-9]*')
 
         self.filename = filename
         self.pairs = {}
@@ -125,7 +125,7 @@ class SpecFile:
 
     def _bump_version_url(self, new_version):
         re_version = re.compile('^(?P<prefix>\s*Version\s*:\s*).*$')
-        re_url = re.compile('^\s*Source[0-9]:\s*(http://|https://|ftp)')
+        re_url = re.compile('^\s*Source[0-9]*:\s*(http://|https://|ftp)')
 
         #Create temp file
         fd, abs_path = mkstemp()

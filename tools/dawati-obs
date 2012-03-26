@@ -22,7 +22,10 @@ import optparse
 import glob
 import re
 
-from dawati import logger
+from tempfile import mkstemp
+from shutil import move
+
+from dawati import logger, config
 
 commands = ('update', )
 
@@ -56,6 +59,10 @@ class SpecFile:
 
     def version(self):
         return self.pairs['Version']
+
+    def _get_base_file_name(self):
+        base, ext = os.path.splitext(os.path.basename(self.filename))
+        return base
 
     def _replace_major_minor(self, line, new_version):
         re_mmm = re.compile('^(?P<major>[0-9]+)\.(?P<minor>[0-9]+)\.(?P<micro>[0-9]+)$')
@@ -117,9 +124,6 @@ class SpecFile:
                 pass
 
     def _bump_version_url(self, new_version):
-        from tempfile import mkstemp
-        from shutil import move
-
         re_version = re.compile('^(?P<prefix>\s*Version\s*:\s*).*$')
         re_url = re.compile('^\s*Source[0-9]:\s*(http://|https://|ftp)')
 
@@ -141,6 +145,34 @@ class SpecFile:
 
         move(abs_path, self.filename)
 
+    def _get_changelog_date(self):
+        import datetime
+        return datetime.datetime.now().strftime("%a %b %d %Y")
+
+    def _add_changelog_entry(self, new_version):
+        entry_header = "* %s %s <%s> - %s\n" % (
+                self._get_changelog_date(),
+                config.get('name'),
+                config.get('email'),
+                new_version)
+        entry = "- Update to %s\n" % new_version
+        changes_file = self._get_base_file_name() + ".changes"
+
+        fd, abs_path = mkstemp()
+        new_file = open(abs_path,'w')
+
+        new_file.write(entry_header)
+        new_file.write(entry)
+        new_file.write("\n")
+
+        for line in open(changes_file):
+            new_file.write(line)
+
+        new_file.close()
+        os.close(fd)
+
+        move(abs_path, changes_file)
+
     def update(self, new_version):
         # replace the tarball by the new one
         try:
@@ -150,6 +182,9 @@ class SpecFile:
 
         # bump version and URL
         self._bump_version_url(new_version)
+
+        # and finally add a change log entry
+        self._add_changelog_entry(new_version)
 
 def parse_options(args):
     import dawati.__version__
@@ -176,6 +211,12 @@ def parse_options(args):
 
 if __name__ == '__main__':
     olddir = None
+
+    config.load()
+
+    if not config.get('name') or not config.get('email'):
+        logger.error("Need a user name and address configured")
+        sys.exit(1)
 
     (options, args) = parse_options(sys.argv[2:])
 

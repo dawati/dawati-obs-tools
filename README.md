@@ -184,7 +184,7 @@ A Real World-ish Flow
 
 Let's imagine I'm responsible for updating 4 package in an OBS based distro:
 
-    $ cat ~/packages
+    $ cat ~/packages.list
     farstream
     glib2
     gtk3

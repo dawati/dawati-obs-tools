@@ -35,6 +35,7 @@ except ImportError:
 from gog.progressbar import ProgressBar
 from gog.message import Message
 from gog.fetcher import Fetcher
+import gog.config
 
 __rc_ups_regex = re.compile("(.*?)(-?(rc|pre|beta|alpha)([0-9]*))", re.I)
 
@@ -130,11 +131,12 @@ class Package:
     def get_latest_version(self, stability='stable'):
         return self.versions[-1]
 
-obs_template = "http://download.meego.com/live/%s/Trunk"
-obs_trunk    = "http://download.meego.com/snapshots/latest/repos/oss/source"
-
 class OBSRepository:
     def __init__(self, project):
+
+        obs_trunk = gog.config.get('obs_repo_trunk')
+        obs_template = gog.config.get('obs_repo_template')
+
         if project == 'Trunk':
             self.url = obs_trunk
         else:
@@ -511,6 +513,9 @@ class Dispatcher:
         return "Not Found"
 
 if __name__ == '__main__':
+
+    gog.config.load()
+
     parser = optparse.OptionParser()
 
     parser.add_option("-r", "--project", type="string", dest="project",

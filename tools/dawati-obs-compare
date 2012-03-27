@@ -333,7 +333,11 @@ class GNOME(PackageSource):
                 else:
                     unstable.append(version)
 
-            versions = stable
+            # If we could not find any stable versions, try the unstable list
+            if stable:
+                versions = stable
+            else:
+                versions = unstable
 
         if len(versions) == 0:
             m.warn("could not parse json data: %s" % j[2])

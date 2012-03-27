@@ -99,7 +99,7 @@ class SpecFile:
             url = self._resolve_url(source, new_version)
 
             tarball = os.path.basename(url)
-            if os.path.isfile(tarball):
+            if os.path.isfile(tarball) and os.path.getsize(tarball) != 0:
                 continue
 
             logger.info('Downloading %s' % url)

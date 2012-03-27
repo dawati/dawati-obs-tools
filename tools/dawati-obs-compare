@@ -617,6 +617,8 @@ if __name__ == '__main__':
                     obs_version = repo.get_version(p)
                     upstream_version = dispatcher.get_upstream_version(p)
                     packages.append((p,obs_version))
+                else:
+                    m.warn("could not find %s in %s" % (p, options.project))
             # We let the user sort the files as he/she wants in the given file
             # no need to sort then.
         else:

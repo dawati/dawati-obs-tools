@@ -15,5 +15,5 @@ for line in `cat $PACKAGES_LIST | tail -n+2`; do
     dawati-obs update $version
     osc ar
     osc commit -m "Update to $version"
-    cd ..
+    cd ../../
 done

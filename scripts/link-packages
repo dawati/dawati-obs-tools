@@ -1,0 +1,15 @@
+#!/bin/sh
+
+SRC_OBS_PROJECT=$1
+PACKAGES_LIST=$2
+DEST_OBS_PROJECT=$3
+
+# CSV file is name;obs_version;upstream_version (output of dawati-obs-compare)
+# The first line is column headers, so skip it.
+for line in `cat $PACKAGES_LIST | tail -n+2`; do
+    csv=(${line//;/ })
+    package=${csv[0]}
+
+    echo "Link $package"
+    osc linkpac $SRC_OBS_PROJECT $package $DEST_OBS_PROJECT
+done

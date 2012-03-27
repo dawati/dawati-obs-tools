@@ -4,6 +4,7 @@ CGAL CGAL-([0-9.]*)\.tar.xz https://gforge.inria.fr/frs/?group_id=52
 ConsoleKit DEFAULT http://www.freedesktop.org/software/ConsoleKit/dist/
 Django DEFAULT:Django PYPI-DEFAULT
 Falcon Falcon-([0-9\.]*)\.t.*gz http://falconpl.org/project_dl/_official_rel/
+GConf-dbus DEFAULT:GConf GNOME-DEFAULT:GConf
 ImageMagick ImageMagick-([0-9]\.[0-9]\.[0-9]-.*?[0-9]).tar.bz2 ftp://ftp.imagemagick.org/pub/ImageMagick/
 Miro [Mm]iro-(.*?)\.tar\. http://ftp.osuosl.org/pub/pculture.org/miro/src/
 ORBit2 DEFAULT GNOME-DEFAULT
@@ -209,6 +210,7 @@ cmake DEFAULT http://www.cmake.org/cmake/resources/software.html
 cmospwd cmospwd-([0-9\.]*?).tar.bz2 http://www.cgsecurity.org/wiki/CmosPwd
 coccinelle DEFAULT http://coccinelle.lip6.fr/download.php
 coda DEFAULT http://www.coda.cs.cmu.edu/pub/coda/src/
+cogl DEFAULT GNOME-DEFAULT
 colord DEFAULT http://www.freedesktop.org/software/colord/releases/
 colordiff DEFAULT http://colordiff.sourceforge.net/
 compiz DEFAULT:compiz-core http://releases.compiz.org/*/
@@ -510,6 +512,7 @@ gnome-disk-utility DEFAULT GNOME-DEFAULT
 gnome-doc-utils DEFAULT GNOME-DEFAULT
 gnome-gmail DEFAULT SF-DEFAULT
 gnome-icon-theme DEFAULT GNOME-DEFAULT
+gnome-icon-theme-extras DEFAULT GNOME-DEFAULT
 gnome-icon-theme-symbolic DEFAULT GNOME-DEFAULT
 gnome-keyring DEFAULT GNOME-DEFAULT
 gnome-menus DEFAULT GNOME-DEFAULT

@@ -115,13 +115,19 @@ class SpecFile:
                     logger.warning('%s Not Found!' % url)
                 raise e
 
-            # remove the old one
+            # Remove the old one, we could have changed the tarball extension
+            # in the update process, so try to remove known tarball extensions.
+            # Stop at the first one though.
             old_tarball = os.path.basename(self._resolve_url(source))
-            try:
-                logger.info('Remove %s' % old_tarball)
-                os.remove(old_tarball)
-            except OSError:
-                pass
+            base, likely_ext = os.path.splitext(old_tarball)
+            for ext in (likely_ext, '.bz2', '.xz', '.gz'):
+                if os.path.isfile(base + ext):
+                    try:
+                        logger.info('Remove %s' % base + ext)
+                        os.remove(base + ext)
+                    except OSError:
+                        pass
+                    break
 
     def _bump_version_url(self, new_version):
         re_version = re.compile('^(?P<prefix>\s*Version\s*:\s*).*$')

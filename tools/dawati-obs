@@ -117,11 +117,13 @@ class SpecFile:
                 urlgrabber.urlgrab(url, tarball,
                                    progress_obj = text_progress_meter())
             except urlgrabber.grabber.URLGrabError, e:
-                if e.errno == 14: # HTTPError
-                    logger.warning('%s Not Found!' % url)
                 # Don't leave partial / 0 sized downloads
-                remove(os.path.basename(tarball))
-                raise e
+                remove(tarball)
+                if e.errno == 14: # HTTPError
+                    logger.error('%s Not Found!' % url)
+                    sys.exit(1)
+                else:
+                    raise e
 
             # Remove the old one, we could have changed the tarball extension
             # in the update process, so try to remove known tarball extensions.

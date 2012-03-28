@@ -65,7 +65,7 @@ class SpecFile:
         return base
 
     def _replace_major_minor(self, line, new_version):
-        re_mmm = re.compile('^(?P<major>[0-9]+)\.(?P<minor>[0-9]+)\.(?P<micro>[0-9]+)$')
+        re_mmm = re.compile('^(?P<major>[0-9]+)\.(?P<minor>[0-9]+)')
         old_match = re_mmm.match(self.version())
         new_match = re_mmm.match(new_version)
         if old_match and new_match:

@@ -29,6 +29,12 @@ from dawati import logger, config
 
 commands = ('update', )
 
+def remove(file):
+    try:
+        os.remove(file)
+    except OSError:
+        pass
+
 class SpecFile:
     def __init__(self, filename):
         re_pair = re.compile('^\s*(?P<key>[a-zA-Z0-9]+)\s*:\s*(?P<value>.*)\s*$')
@@ -113,6 +119,8 @@ class SpecFile:
             except urlgrabber.grabber.URLGrabError, e:
                 if e.errno == 14: # HTTPError
                     logger.warning('%s Not Found!' % url)
+                # Don't leave partial / 0 sized downloads
+                remove(os.path.basename(tarball))
                 raise e
 
             # Remove the old one, we could have changed the tarball extension
@@ -122,11 +130,8 @@ class SpecFile:
             base, likely_ext = os.path.splitext(old_tarball)
             for ext in (likely_ext, '.bz2', '.xz', '.gz'):
                 if os.path.isfile(base + ext):
-                    try:
-                        logger.info('Remove %s' % base + ext)
-                        os.remove(base + ext)
-                    except OSError:
-                        pass
+                    logger.info('Remove %s' % base + ext)
+                    remove(base + ext)
                     break
 
     def _bump_version_url(self, new_version):

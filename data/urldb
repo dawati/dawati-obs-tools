@@ -330,6 +330,7 @@ empathy DEFAULT GNOME-DEFAULT
 engine_pkcs11 DEFAULT http://www.opensc-project.org/files/engine_pkcs11/
 enscript DEFAULT GNU-DEFAULT
 eog DEFAULT GNOME-DEFAULT
+eog-plugins DEFAULT GNOME-DEFAULT
 epdfview epdfview-([0-9\.]+)\.tar\.bz2 http://trac.emma-soft.com/epdfview/wiki/Download
 epydoc DEFAULT SF-DEFAULT
 eris DEFAULT SF-DEFAULT:worldforge
@@ -400,6 +401,7 @@ gcin gcin-([0-9\.]*?).tar.bz2 http://cle.linux.org.tw/gcin/download/
 gcl DEFAULT GNU-DEFAULT
 gcompris DEFAULT GNU-DEFAULT
 gconf-editor DEFAULT GNOME-DEFAULT
+gcr DEFAULT GNOME-DEFAULT
 gdbm DEFAULT GNU-DEFAULT
 gdk-pixbuf DEFAULT GNOME-DEFAULT
 gdome2 DEFAULT http://gdome2.cs.unibo.it/
@@ -1734,7 +1736,7 @@ telepathy-gabble DEFAULT http://telepathy.freedesktop.org/releases/telepathy-gab
 telepathy-glib DEFAULT http://telepathy.freedesktop.org/releases/telepathy-glib
 telepathy-haze DEFAULT http://telepathy.freedesktop.org/releases/telepathy-haze
 telepathy-logger DEFAULT http://telepathy.freedesktop.org/releases/telepathy-logger
-telepathy-misson-control DEFAULT http://telepathy.freedesktop.org/releases/telepathy-misson-control
+telepathy-mission-control DEFAULT http://telepathy.freedesktop.org/releases/telepathy-mission-control
 telepathy-qt4 DEFAULT http://telepathy.freedesktop.org/releases/telepathy-qt4
 telepathy-qt4-yell DEFAULT http://telepathy.freedesktop.org/releases/telepathy-qt4-yell
 tellico tellico-(.*?)\.tar\.bz2 http://tellico-project.org/download
@@ -2007,6 +2009,7 @@ yaml-cpp DEFAULT GOOGLE-DEFAULT
 yasm DEFAULT http://www.tortall.net/projects/yasm/releases/
 yaz DEFAULT http://ftp.indexdata.dk/pub/yaz/
 yelp DEFAULT GNOME-DEFAULT
+yelp-tools DEFAULT GNOME-DEFAULT
 ykpers DEFAULT GOOGLE-DEFAULT:yubikey-personalization
 youtube-dl "/youtube-dl"">([\d.]+)</a>" http://rg3.github.com/youtube-dl/download.html
 ytree DEFAULT http://www.han.de/~werner/ytree.html

@@ -524,6 +524,7 @@ gnome-packagekit DEFAULT GNOME-DEFAULT
 gnome-password-generator DEFAULT SF-DEFAULT:gnome-password
 gnome-python2 DEFAULT GNOME-DEFAULT
 gnome-screensaver DEFAULT GNOME-DEFAULT
+gnome-screenshot DEFAULT GNOME-DEFAULT
 gnome-session DEFAULT GNOME-DEFAULT
 gnome-settings-daemon DEFAULT GNOME-DEFAULT
 gnome-shell DEFAULT GNOME-DEFAULT

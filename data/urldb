@@ -602,6 +602,9 @@ guilt DEFAULT http://www.kernel.org/pub/linux/kernel/people/jsipek/guilt/
 gupnp DEFAULT GNOME-DEFAULT
 gupnp-av DEFAULT GNOME-DEFAULT
 gupnp-dlna DEFAULT GNOME-DEFAULT
+gupnp-igd DEFAULT GNOME-DEFAULT
+gupnp-tools DEFAULT GNOME-DEFAULT
+gupnp-ui DEFAULT GNOME-DEFAULT
 gupnp-vala DEFAULT GNOME-DEFAULT
 gutenprint "Gutenprint (.*?) is released" http://gimp-print.sourceforge.net/
 gv DEFAULT GNU-DEFAULT
@@ -805,6 +808,7 @@ libnetfilter_conntrack DEFAULT http://ftp.netfilter.org/pub/libnetfilter_conntra
 libnetfilter_log DEFAULT http://ftp.netfilter.org/pub/libnetfilter_log/
 libnetfilter_queue DEFAULT http://ftp.netfilter.org/pub/libnetfilter_queue/
 libnfnetlink DEFAULT http://ftp.netfilter.org/pub/libnfnetlink/
+libnice DEFAULT http://nice.freedesktop.org/releases/
 libnl DEFAULT http://www.infradead.org/~tgr/libnl/files/
 libnotify DEFAULT GNOME-DEFAULT
 liboauth DEFAULT SF-DEFAULT

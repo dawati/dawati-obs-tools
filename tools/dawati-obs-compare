@@ -619,7 +619,6 @@ if __name__ == '__main__':
                 # we can actually compare with something...)
                 if repo.has_package(p):
                     obs_version = repo.get_version(p)
-                    upstream_version = dispatcher.get_upstream_version(p)
                     packages.append((p,obs_version))
                 else:
                     m.warn("could not find %s in %s" % (p, options.project))

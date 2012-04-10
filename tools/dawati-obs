@@ -287,10 +287,9 @@ if __name__ == '__main__':
 
     if command == 'update':
         if not args:
-            logger.error ("Usage: dawati-obs update new_version")
-            sys.exit(1)
-
-        new_version = args[0]
+            new_version = spec.version()
+        else:
+            new_version = args[0]
 
         logger.info("Updating to %s" % new_version)
         spec.update(new_version)

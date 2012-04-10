@@ -128,6 +128,11 @@ class SpecFile:
             # Remove the old one, we could have changed the tarball extension
             # in the update process, so try to remove known tarball extensions.
             # Stop at the first one though.
+
+            # Don't do it if we are asking for the same version though.
+            if new_version == self.version():
+                return
+
             old_tarball = os.path.basename(self._resolve_url(source))
             base, likely_ext = os.path.splitext(old_tarball)
             for ext in (likely_ext, '.bz2', '.xz', '.gz'):

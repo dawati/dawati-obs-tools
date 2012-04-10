@@ -1,0 +1,20 @@
+#!/bin/sh
+
+for package in "$*"; do
+    git clone git://pkgs.fedoraproject.org/$package
+    cd $package
+    rm -rf .git
+    rm sources
+
+    # download the tarball
+    version=`grep Version: $package.spec | sed -e "s/^Version:\s*//"`
+    dawati-obs update $version
+
+    # create the changes file from the spec file's %changelog
+    sed -n -e '/^%changelog/,$p' $package.spec | tail -n+2 > $package.changes
+
+    # and remove %changelog from the spec file
+    sed -i -e '/^%changelog/,$d' $package.spec
+
+    cd ..
+done

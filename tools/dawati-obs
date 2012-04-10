@@ -193,6 +193,11 @@ class SpecFile:
         except KeyboardInterrupt:
             logger.warning('Downloading interrupted by ^C')
 
+        # when update has been called with the version we already have, skip
+        # the reset of the update
+        if new_version == self.version():
+            return
+
         # bump version and URL
         self._bump_version_url(new_version)
 

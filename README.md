@@ -34,6 +34,9 @@ The available keys are:
     published rpm repositories. The OBS project name is inserted at %s
  *  `obs_repo_trunk`: The published URL for Trunk (in the general case, this is
     different from `obs_repo_template`)
+ *  `obs_default_project`: When relevant, the tools can default to a default
+    project to work with
+ *  `osc_options`: Extra options to give when invoking osc in scripts
 
 
 dawati-obs-compare

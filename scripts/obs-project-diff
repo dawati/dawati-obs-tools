@@ -1,0 +1,27 @@
+#!/bin/sh
+
+CONFIG_FILE=~/.dawati-obsrc
+if [ -f $CONFIG_FILE ]; then
+    source $CONFIG_FILE
+fi
+
+if [ -z $1 ]; then
+    PROJECT=$obs_default_project
+else
+    PROJECT=$1
+fi
+TRUNK=Trunk
+
+for package in `osc $osc_options ls $PROJECT`; do
+    osc $osc_options rdiff --missingok $TRUNK $package $PROJECT | grep "^Index: " | sed -e 's/^Index: //' | grep -v "sources\$" 1> $0.tmp 2> $0.tmp
+    sed -i '/^$/d' $0.tmp
+    sed -i 's/Index://g' $0.tmp
+    if ! test -s $0.tmp; then
+        echo "$package is good to remove"
+        echo "$package"
+    else
+        echo "$package differs"
+        for line in `cat $0.tmp`; do echo -e "\t$line"; done
+    fi
+    rm -f $0.tmp
+done

@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# The goal of this script is to create a big hash table of:
+#  'rpm package' => 'obs package'
+# for instance:
+#  'iproute'             => 'iproute'
+#  'iproute-debugsource' => 'iproute'
+#  'iproute-debuginfo'   => 'iproute'
+#  'iproute-doc'         => 'iproute'
+# This will allow to us create the list of OBS packages we care about from the
+# list of rpm packages installed in an image
+
+CONFIG_FILE=~/.dawati-obsrc
+if [ -f $CONFIG_FILE ]; then
+    source $CONFIG_FILE
+fi
+
+TRUNK=Trunk
+
+packages=`osc $osc_options ls $TRUNK`
+for p in $packages; do
+    echo "Processing package $p..." 1>&2
+
+    rpm_packages=`osc $osc_options buildinfo $TRUNK $p standard i586 | \
+                  sed -n -e 's,.*<subpack>\(.*\)</subpack>,\1,p'`
+    for rpm_package in $rpm_packages; do
+        echo "$rpm_package;$p"
+    done
+done

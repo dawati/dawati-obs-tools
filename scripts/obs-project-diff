@@ -18,7 +18,6 @@ for package in `osc $osc_options ls $PROJECT`; do
     sed -i 's/Index://g' $0.tmp
     if ! test -s $0.tmp; then
         echo "$package is good to remove"
-        echo "$package"
     else
         echo "$package differs"
         for line in `cat $0.tmp`; do echo -e "\t$line"; done

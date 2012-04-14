@@ -197,9 +197,9 @@ Let's now run compare to check which packages need an update:
 
     $ tmp=`mktemp -d` && cd $tmp
 
-    $ dawati-obs-compare -r MyProject:Devel -f ~/packages.list -t csv -o need_update
+    $ dawati-obs-compare -r MyProject:Devel -f ~/packages.list -t csv -o need-update
 
-    $ cat need_update
+    $ cat need-update
     Package;MyProject:Devel;upstream
     farstream;0.1.1;0.1.2
     glib2;2.31.20;2.32.0
@@ -231,7 +231,7 @@ instance, this repository includes an update-packages script in scripts/:
 
 Which gives us:
 
-    $ ~/src/dawati-obs-tools/scripts/update-packages MyProject:Devel need_update
+    $ ~/src/dawati-obs-tools/scripts/update-packages MyProject:Devel need-update
 
     [lots of about about what it's doing]
 

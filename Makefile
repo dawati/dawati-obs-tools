@@ -22,9 +22,12 @@ install: all install-data
 develop: all install-data
 	$(PYTHON) setup.py develop
 
+pkgdatadir=/usr/share/dawati-obs
+
 install-data:
-	install -d ${DESTDIR}/usr/share/dawati-obs
-	install -m 644 data/urldb ${DESTDIR}/usr/share/dawati-obs
+	install -d ${DESTDIR}/$(pkgdatadir)
+	install -m 644 data/urldb ${DESTDIR}/$(pkgdatadir)
+	install -m 644 data/rpmpackage2obspackagedb ${DESTDIR}/$(pkgdatadir)
 
 clean:
 	rm -rf build/

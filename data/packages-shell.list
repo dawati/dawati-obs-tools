@@ -16,6 +16,7 @@ evolution-data-server
 farstream
 file-roller
 folks
+gconf-editor
 gcr
 gdk-pixbuf
 gjs

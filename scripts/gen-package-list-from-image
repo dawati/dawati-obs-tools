@@ -10,7 +10,7 @@ db=$db_path/rpmpackage2obspackagedb
 rpms_raw=$1
 
 # strip the version from the rpm names
-rpm_packages=`sed -e 's/-[0-9].*$//' $rpms_raw`
+rpm_packages=`sed -e 's/\..*$//' $rpms_raw`
 
 tmp=`mktemp`
 

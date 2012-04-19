@@ -26,6 +26,7 @@ abattis-cantarell-fonts DEFAULT GNOME-DEFAULT
 abcde DEFAULT DEBIAN-DEFAULT
 abiword >([.0-9]+?)/< http://www.abisource.com/downloads/abiword/
 abook abook-(0.*?).tar.gz http://abook.sourceforge.net/
+accountsservice DEFAULT http://www.freedesktop.org/software/accountsservice/
 acct DEFAULT GNU-DEFAULT
 acl DEFAULT http://download.savannah.gnu.org/releases-noredirect/acl/
 acpid DEFAULT http://tedfelix.com/linux/acpid-netlink.html
@@ -163,6 +164,7 @@ blobwars \bblobwars-([\d.]+)(?:-dfsg)?\.t SF-DEFAULT
 bluetile HACKAGE-DEFAULT HACKAGE-DEFAULT
 bluez DEFAULT http://www.kernel.org/pub/linux/bluetooth/
 bodr DEFAULT SF-DEFAULT
+boost "<title>Version (.*)</title>" http://www.boost.org/feed/downloads.rss
 boswars DEFAULT http://www.boswars.org/dist/releases/
 bouml bouml_(.*?).tar.gz http://bouml.free.fr/download.html
 bouml-doc doc(.*?).tar.gz http://bouml.free.fr/documentation.html
@@ -215,6 +217,7 @@ colord DEFAULT http://www.freedesktop.org/software/colord/releases/
 colordiff DEFAULT http://colordiff.sourceforge.net/
 compiz DEFAULT:compiz-core http://releases.compiz.org/*/
 conduit DEFAULT GNOME-DEFAULT
+connman DEFAULT http://www.kernel.org/pub/linux/network/connman/
 conntrack-tools DEFAULT http://ftp.netfilter.org/pub/conntrack-tools/
 coreutils DEFAULT GNU-DEFAULT
 corkscrew corkscrew-(.*?).tar.gz http://www.agroman.net/corkscrew/
@@ -1001,6 +1004,7 @@ osslsigncode DEFAULT SF-DEFAULT
 ovaldi DEFAULT SF-DEFAULT
 p11-kit DEFAULT http://p11-glue.freedesktop.org/releases/
 p7zip p7zip_([0-9.]*?)_src_all.tar.bz2 SF-DEFAULT
+pacrunner DEFAULT http://www.kernel.org/pub/linux/network/connman/
 pal DEFAULT SF-DEFAULT:palcal
 pam DEFAULT http://www.us.kernel.org/pub/linux/libs/pam/library/
 pam_mount DEFAULT SF-DEFAULT:pam-mount

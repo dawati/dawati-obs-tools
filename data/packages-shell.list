@@ -47,6 +47,7 @@ grilo-plugins
 gsettings-desktop-schemas
 gssdp
 gtk-doc
+gtk2
 gtk3
 gupnp
 gupnp-av

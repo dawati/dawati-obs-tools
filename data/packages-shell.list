@@ -60,6 +60,7 @@ gupnp-vala
 gvfs
 intltool
 libcroco
+libgnome-keyring
 libgnomekbd
 libgtop2
 libgweather

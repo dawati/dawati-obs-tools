@@ -205,7 +205,7 @@ chmsee DEFAULT GOOGLE-DEFAULT
 cifs-utils DEFAULT ftp://ftp.samba.org/pub/linux-cifs/cifs-utils/
 clisp DEFAULT http://ftp.gnu.org/gnu/clisp/latest/
 cloog DEFAULT http://www.bastoul.net/cloog/download.php
-clutter DEFAULT http://source.clutter-project.org/sources/clutter/*/
+clutter DEFAULT GNOME-DEFAULT
 clutter-gst DEFAULT GNOME-DEFAULT
 clutter-gtk DEFAULT GNOME-DEFAULT
 cmake DEFAULT http://www.cmake.org/cmake/resources/software.html
